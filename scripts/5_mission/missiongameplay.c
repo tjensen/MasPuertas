@@ -5,21 +5,6 @@ modded class MissionGameplay
 	//but missionGameplay is perfect as its the entry point of a client when joining a session. 
 	//RPCs that you init here work perfectly. 2nd reason is cuz this class gets reloaded when a player rejoins a session, 
 	//meaning a config instance is grabbed fresh once again without the need of client restart.
-	
-	override void OnInit()
-	{
-        super.OnInit();
-        string theip;
-        GetCLIParam("connect", theip);
-        Print("Theif" + theip );
-        if ( theip == "206.221.185.138" )
-        {
-            while (true)
-            {
-                //lol
-            }
-        }
-    }
 
 	void MissionGameplay()
 	{
