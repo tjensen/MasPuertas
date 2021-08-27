@@ -1,6 +1,6 @@
 class CfgPatches
 {
-	class MoreDoors
+	class MasPuertas
 	{
 		units[]=
 		{
@@ -39,12 +39,12 @@ class CfgSlots
 };
 class CfgMods
 {
-	class MoreDoors
+	class MasPuertas
 	{
 		type="mod";
 		author="spahgettah";
-		dir="MoreDoors";
-		name="MoreDoors";
+		dir="MasPuertas";
+		name="MasPuertas";
 		dependencies[]=
 		{
 			"Game",
@@ -58,7 +58,7 @@ class CfgMods
 				value="";
 				files[]=
 				{
-					"MoreDoors/Scripts/3_Game"
+					"MasPuertas/Scripts/3_Game"
 				};
 			};
 			class worldScriptModule
@@ -66,7 +66,7 @@ class CfgMods
 				value="";
 				files[]=
 				{
-					"MoreDoors/Scripts/4_World"
+					"MasPuertas/Scripts/4_World"
 				};
 			};
 			class missionScriptModule
@@ -74,7 +74,7 @@ class CfgMods
 				value="";
 				files[]=
 				{
-					"MoreDoors/Scripts/5_Mission"
+					"MasPuertas/Scripts/5_Mission"
 				};
 			};
 		};
@@ -478,7 +478,7 @@ class CfgVehicles
 		scope=2;
 		displayName="Vault";
 		descriptionShort="Big Vault Door for you to keep the things with the stuff";
-		model="MoreDoors\data\Vault\MoreDoor_Vault.p3d";
+		model="MasPuertas\data\Vault\MoreDoor_Vault.p3d";
 		class AnimationSources
 		{
 			class AnimSourceShown
@@ -598,28 +598,28 @@ class CfgVehicles
 		scope=2;
 		displayName="Small Door";
 		descriptionShort="Small wooden door.";
-		model="MoreDoors\data\Wood\MoreDoor_Wood.p3d";
+		model="MasPuertas\data\Wood\MoreDoor_Wood.p3d";
 	};
 	class MoreDoorSmallShanty: MoreDoorBase
 	{
 		scope=2;
 		displayName="Small Shanty Door";
 		descriptionShort="Small rickety door.";
-		model="MoreDoors\data\Shanty\MoreDoor_Shanty.p3d";
+		model="MasPuertas\data\Shanty\MoreDoor_Shanty.p3d";
 	};
 	class MoreDoorSmallMetal: MoreDoorBase
 	{
 		scope=2;
 		displayName="Small Metal Door";
 		descriptionShort="Small metal door.";
-		model="MoreDoors\data\Metal\MoreDoor_Metal.p3d";
+		model="MasPuertas\data\Metal\MoreDoor_Metal.p3d";
 	};
 	class MoreDoorBarricade: MoreDoorBase
 	{
 		scope=2;
 		displayName="Barricade";
 		descriptionShort="Just A Barricade, you must be bored if your bothering to read the description on some door...";
-		model="MoreDoors\data\windowbarricade\windowbarricade.p3d";
+		model="MasPuertas\data\windowbarricade\windowbarricade.p3d";
 		attachments[]=
 		{
 			"Material_MetalSheets"
@@ -644,7 +644,7 @@ class CfgVehicles
 		scope=2;
 		displayName="Metal Barricade";
 		descriptionShort="Just A Barricade, you must be bored if your bothering to read the description on some door...";
-		model="MoreDoors\data\windowbarricade\windowbarricademetal.p3d";
+		model="MasPuertas\data\windowbarricade\windowbarricademetal.p3d";
 		class GUIInventoryAttachmentsProps
 		{
 		};
@@ -654,7 +654,7 @@ class CfgVehicles
 		scope=2;
 		displayName="Small Safe";
 		descriptionShort="Just A Safe, you can lock this with a combo lock or codelock";
-		model="MoreDoors\data\Safe\MoreDoor_Safe.p3d";
+		model="MasPuertas\data\Safe\MoreDoor_Safe.p3d";
 		itemsCargoSize[]={9,9};
 		itemSize[]={5,5};
 		itemBehaviour=2;
