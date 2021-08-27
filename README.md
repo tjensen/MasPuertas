@@ -1,7 +1,6 @@
 # MasPuertas
-A less broken version of the MoreDoors mod for DayZ
 
-This code is a fork of the original [MoreDoors](https://steamcommunity.com/sharedfiles/filedetails/?id=2007175894) mod by https://steamcommunity.com/id/jokerofclub, which has stopped being maintained.
+This code is a fork of the [MoreDoors](https://steamcommunity.com/sharedfiles/filedetails/?id=2007175894) mod by https://steamcommunity.com/id/jokerofclub, which has stopped being maintained.
 
 ## License
 
