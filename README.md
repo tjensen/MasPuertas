@@ -1,6 +1,6 @@
 # MasPuertas
 
-This is a fork of the [MoreDoors](https://steamcommunity.com/sharedfiles/filedetails/?id=2007175894) mod by [jest](https://steamcommunity.com/id/jokerofclub), which has stopped being maintained.
+This is a less broken fork of the [MoreDoors](https://steamcommunity.com/sharedfiles/filedetails/?id=2007175894) mod by [jest](https://steamcommunity.com/id/jokerofclub), which has stopped being maintained.
 
 ## License
 
