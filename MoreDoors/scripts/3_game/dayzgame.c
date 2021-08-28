@@ -10,11 +10,13 @@ modded class DayZGame
         }
 
         Print("[MasPuertas] DayZGame --> Cannot Locate Config File...");
-	    return null;
+        return null;
     }
 
     void SetMoreDoorConfig(ref MoreDoorConfig cfg)
-	{
-		m_MoreDoorConfig = cfg;
-	}
-}
+    {
+        m_MoreDoorConfig = cfg;
+    }
+};
+
+// vim:ft=enforce
