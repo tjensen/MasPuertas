@@ -106,7 +106,7 @@ class MoreDoorKitBase extends ItemBase
     {
         super.OnPlacementComplete(player);
 
-        if (GetGame().IsServer() && hasTheGoodStuff())
+        if (GetGame().IsServer())
         {
             this.Delete();
         }
@@ -375,3 +375,4 @@ class MoreDoorBarricadeKit extends MoreDoorKitBase
     }
 };
 
+// vim:ft=enforce
