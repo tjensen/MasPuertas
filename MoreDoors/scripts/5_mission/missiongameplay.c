@@ -14,11 +14,12 @@ modded class MissionGameplay
         GetRPCManager().SendRPC("MoreDoorConfig", "GetMoreDoorCfg", null, true, null); //send RPC to server once this class starts to get cfg. Identity is null in this case becuase we are sending an RPC from client, clients can't target specific identities
     }
 
-    void MoreDoorStoreConfig(CallType type, ref ParamsReadContext ctx, ref PlayerIdentity sender, ref Object target)
+    void MoreDoorStoreConfig(CallType type, ParamsReadContext ctx, PlayerIdentity sender, Object target)
     {
-        ref Param1<ref MoreDoorConfig> data;
         if (type == CallType.Client)
         {
+            Param1<MoreDoorConfig> data;
+
             if (!ctx.Read(data)) return; //Return if failed to read data for somereason.
 
             g_Game.SetMoreDoorConfig( data.param1 );

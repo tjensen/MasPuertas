@@ -2,7 +2,7 @@ modded class DayZGame
 {
     private ref MoreDoorConfig m_MoreDoorConfig;
 
-    ref MoreDoorConfig GetMoreDoorConfig()
+    MoreDoorConfig GetMoreDoorConfig()
     {
         if (m_MoreDoorConfig)
         {
@@ -13,7 +13,7 @@ modded class DayZGame
         return null;
     }
 
-    void SetMoreDoorConfig(ref MoreDoorConfig cfg)
+    void SetMoreDoorConfig(MoreDoorConfig cfg)
     {
         m_MoreDoorConfig = cfg;
     }

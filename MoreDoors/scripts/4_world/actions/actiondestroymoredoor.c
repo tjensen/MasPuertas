@@ -52,7 +52,7 @@ class ActionDestroyMoreDoor: ActionContinuousBase
 
 	bool HasFancyRaidTools(ItemBase item_in_hands)
 	{
-		ref TStringArray j_raidingTools = g_Game.GetMoreDoorConfig().Get_MoreDoorRaidTools();
+		TStringArray j_raidingTools = g_Game.GetMoreDoorConfig().Get_MoreDoorRaidTools();
 
 		foreach (string tool : j_raidingTools) 
 		{

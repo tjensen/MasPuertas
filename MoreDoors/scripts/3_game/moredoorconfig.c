@@ -22,13 +22,13 @@ class MoreDoorConfig
 
 		if (!FileExist(MODCONFIG_ROOT_FOLDER))
         {
-            Print("[MoreDoorConfg] '" + MODCONFIG_ROOT_FOLDER + "' does NOT exist, creating directory!");
+            Print("[MasPuertas] '" + MODCONFIG_ROOT_FOLDER + "' does NOT exist, creating directory!");
             MakeDirectory(MODCONFIG_ROOT_FOLDER);
         }
 
         if (!FileExist(CONFIG_PATH))
         {
-            Print("[MoreDoorConfig] '" + CONFIG_PATH + "' does NOT exist, creating default config!");
+            Print("[MasPuertas] '" + CONFIG_PATH + "' does NOT exist, creating default config!");
             Default();
             return; 
         }
@@ -40,7 +40,7 @@ class MoreDoorConfig
     {
         if (FileExist(CONFIG_PATH))
         {
-            Print("[MoreDoorConfig] '" + CONFIG_PATH + "' found, loading existing config!");
+            Print("[MasPuertas] '" + CONFIG_PATH + "' found, loading existing config!");
             JsonFileLoader<MoreDoorConfig>.JsonLoadFile(CONFIG_PATH, this);
             return true;
         }
@@ -86,7 +86,7 @@ class MoreDoorConfig
 		return CanCraftDoorKits;
 	}
 
-	ref array<string> Get_MoreDoorRaidTools()
+	array<string> Get_MoreDoorRaidTools()
 	{
 		return MoreDoorRaidTools;
 	}
