@@ -1,4 +1,4 @@
-This code is a fork of the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2007175894]MoreDoors[/url] mod by [url=https://steamcommunity.com/id/jokerofclub]jest[/url], which has stopped being maintained.
+This is a fork of the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2007175894]MoreDoors[/url] mod by [url=https://steamcommunity.com/id/jokerofclub]jest[/url], which has stopped being maintained.
 
 [h1]License[/h1]
 
