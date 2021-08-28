@@ -24,4 +24,6 @@ modded class Hologram
 
         super.EvaluateCollision();
     }
-}
+};
+
+// vim:ft=enforce
