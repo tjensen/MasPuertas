@@ -8,6 +8,8 @@ modded class MissionGameplay
 
     void MissionGameplay()
     {
+        PrintFormat("Loaded MasPuertas %1", MAS_PUERTAS_VERSION);
+
         GetRPCManager().AddRPC("MoreDoorConfig", "MoreDoorStoreConfig", this, SingeplayerExecutionType.Client); //Add this RPC as listner to the catch the cfg sent from server.
         GetRPCManager().SendRPC("MoreDoorConfig", "GetMoreDoorCfg", null, true, null); //send RPC to server once this class starts to get cfg. Identity is null in this case becuase we are sending an RPC from client, clients can't target specific identities
     }
@@ -24,3 +26,5 @@ modded class MissionGameplay
         }
     }
 };
+
+// vim:ft=enforce

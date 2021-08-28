@@ -4,15 +4,17 @@ modded class MissionServer
 
     void MissionServer()
     {
+        PrintFormat("Loaded MasPuertas %1", MAS_PUERTAS_VERSION);
+
         GetRPCManager().AddRPC("MoreDoorConfig", "GetMoreDoorCfg", this, SingeplayerExecutionType.Server);
     }
 
     override void OnInit()
     {
         super.OnInit();
-        
-        Print("[MoreDoorConfig] Server Cfg loading..."); 
-       
+
+        Print("[MoreDoorConfig] Server Cfg loading...");
+
         m_MoreDoorConfig = new MoreDoorConfig();
         g_Game.SetMoreDoorConfig( m_MoreDoorConfig );
     }
@@ -25,5 +27,6 @@ modded class MissionServer
             GetRPCManager().SendRPC("MoreDoorConfig", "MoreDoorStoreConfig", new Param1<ref MoreDoorConfig>( m_MoreDoorConfig ), true, sender);
         }
     }
-
 };
+
+// vim:ft=enforce
