@@ -1,5 +1,5 @@
 $ModName = "MasPuertas"
-$VersionFile = "scripts\3_game\version.c"
+$VersionFile = "MoreDoors\scripts\3_game\version.c"
 $ModCppFile = "mod.cpp"
 
 $ErrorActionPreference = "Stop"
@@ -19,7 +19,7 @@ New-Item -Type Directory "P:\@${ModName}\Keys" | Out-Null
 $originalVersion -replace "\bdev\b","$version" | Set-Content -path "$VersionFile" -NoNewLine
 $originalModCpp -replace "\bdev\b","$rawVersion" | Set-Content -path "$ModCppFile" -NoNewLine
 
-& "$((Get-ItemProperty -Path "HKCU:\Software\bohemia interactive\Dayz Tools").path)\Bin\AddonBuilder\AddonBuilder.exe" "P:\${ModName}" "P:\@${ModName}\Addons" "-clear" "-project=P:\${ModName}" "-sign=$env:BIPRIVATEKEY_PATH" "-binarizeFullLogs" "-packonly" "-include=include.lst"
+& "$((Get-ItemProperty -Path "HKCU:\Software\bohemia interactive\Dayz Tools").path)\Bin\AddonBuilder\AddonBuilder.exe" "P:\${ModName}\MoreDoors" "P:\@${ModName}\Addons" "-clear" "-project=P:\${ModName}" "-sign=$env:BIPRIVATEKEY_PATH" "-packonly" "-include=include.lst"
 $buildcode = $lastexitcode
 $builderror = $errorMessage
 

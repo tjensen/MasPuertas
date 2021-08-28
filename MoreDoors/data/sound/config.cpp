@@ -1,6 +1,6 @@
 class CfgPatches
 {
-	class MasPuertas_Sounds
+	class MoreDoors_Sounds
 	{
 		units[]={};
 		weapons[]={};
