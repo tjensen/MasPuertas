@@ -108,7 +108,7 @@ class MoreDoorKitBase extends ItemBase
 
         if (GetGame().IsServer())
         {
-            this.Delete();
+            GetGame().ObjectDelete(this);
         }
 
         SetIsDeploySound(true);
