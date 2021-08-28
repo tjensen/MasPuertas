@@ -1,7 +1,6 @@
 class MoreDoorKitBase extends ItemBase
 {
     ref protected EffectSound                       m_DeployLoopSound;
-    Object                                          moreDoorKit;
     //protected bool m_hasThings;
 
     string slotNails = "Material_Nails";
@@ -103,24 +102,26 @@ class MoreDoorKitBase extends ItemBase
     // ADVANCED PLACEMENT
     //================================================================
 
-    override void OnPlacementComplete( Man player, vector position = "0 0 0", vector orientation = "0 0 0" )
+    override void OnPlacementComplete(Man player, vector position = "0 0 0", vector orientation = "0 0 0")
     {
-        super.OnPlacementComplete( player );
+        super.OnPlacementComplete(player);
 
-        if ( GetGame().IsServer() && hasTheGoodStuff() )
+        if (GetGame().IsServer() && hasTheGoodStuff())
         {
-            PlayerBase player_base = PlayerBase.Cast( player );
-            vector newPosition = player_base.GetLocalProjectionPosition();
-            vector newOrientation = player_base.GetLocalProjectionOrientation();
-
-            moreDoorKit = GetGame().CreateObject(this.j_Door(), newPosition, false );
-            moreDoorKit.SetPosition( newPosition );
-            moreDoorKit.SetOrientation( newOrientation );
-
             this.Delete();
         }
 
-        SetIsDeploySound( true );
+        SetIsDeploySound(true);
+    }
+
+    override bool CanBePlaced(Man player, vector position)
+    {
+        if (!hasTheGoodStuff())
+        {
+            return false;
+        }
+
+        return super.CanBePlaced(player, position);
     }
 
     override bool IsDeployable()
