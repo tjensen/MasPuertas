@@ -456,7 +456,7 @@ class CfgVehicles
     {
         scope=2;
         displayName="Small Metal Door Kit";
-        descriptionShort="Requires 20 planks, 100 nails, 5 Sheet metal, and Metal Wire to build the door. Once the required ingredients are in the slots place the object with the action to build it.";
+        descriptionShort="Requires 20 planks, 75 nails, 5 Sheet metal, and Metal Wire to build the door. Once the required ingredients are in the slots place the object with the action to build it.";
         model="\DZ\gear\camping\wooden_case.p3d";
     };
     class MoreDoorBarricadeKit: MoreDoorKitBase
