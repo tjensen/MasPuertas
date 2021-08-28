@@ -22,7 +22,7 @@ modded class MissionGameplay
             if (!ctx.Read(data)) return; //Return if failed to read data for somereason.
 
             g_Game.SetMoreDoorConfig( data.param1 );
-            Print("[MoreDoors] MissionGameplay --> Got instance of cfg: " + data.param1);
+            Print("[MasPuertas] MissionGameplay --> Got instance of cfg: " + data.param1);
         }
     }
 };

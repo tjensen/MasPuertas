@@ -13,7 +13,7 @@ modded class MissionServer
     {
         super.OnInit();
 
-        Print("[MoreDoorConfig] Server Cfg loading...");
+        Print("[MasPuertas] Server Cfg loading...");
 
         m_MoreDoorConfig = new MoreDoorConfig();
         g_Game.SetMoreDoorConfig( m_MoreDoorConfig );
@@ -23,7 +23,7 @@ modded class MissionServer
     {
         if (type == CallType.Server && sender != null) //Verify that sender is still around so we don't send a null RPC ( sending and RPC with null target will send it to all players in the session )
         {
-            Print("[MoreDoors] MissionServer --> Sending instance of cfg to client: " + sender.GetName());
+            Print("[MasPuertas] MissionServer --> Sending instance of cfg to client: " + sender.GetName());
             GetRPCManager().SendRPC("MoreDoorConfig", "MoreDoorStoreConfig", new Param1<ref MoreDoorConfig>( m_MoreDoorConfig ), true, sender);
         }
     }

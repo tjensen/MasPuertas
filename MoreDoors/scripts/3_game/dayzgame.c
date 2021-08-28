@@ -9,7 +9,7 @@ modded class DayZGame
             return m_MoreDoorConfig;
         }
 
-        Print("[MoreDoors] DayZGame --> Cannot Locate MoreDoors Config File...");
+        Print("[MasPuertas] DayZGame --> Cannot Locate Config File...");
 	    return null;
     }
 
