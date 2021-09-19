@@ -13,13 +13,13 @@ $originalModCpp = (Get-Content -path "$ModCppFile" -raw)
 if (Test-Path "P:\@${ModName}") { Remove-Item -Recurse "P:\@${ModName}" }
 
 New-Item -Type Directory "P:\@${ModName}" | Out-Null
-New-Item -Type Directory "P:\@${ModName}\Addons" | Out-Null
-New-Item -Type Directory "P:\@${ModName}\Keys" | Out-Null
+New-Item -Type Directory "P:\@${ModName}\addons" | Out-Null
+New-Item -Type Directory "P:\@${ModName}\keys" | Out-Null
 
 $originalVersion -replace "\bdev\b","$version" | Set-Content -path "$VersionFile" -NoNewLine
 $originalModCpp -replace "\bdev\b","$rawVersion" | Set-Content -path "$ModCppFile" -NoNewLine
 
-& "$((Get-ItemProperty -Path "HKCU:\Software\bohemia interactive\Dayz Tools").path)\Bin\AddonBuilder\AddonBuilder.exe" "P:\${ModName}\MoreDoors" "P:\@${ModName}\Addons" "-clear" "-project=P:\${ModName}" "-sign=$env:BIPRIVATEKEY_PATH" "-packonly" "-include=include.lst"
+& "$((Get-ItemProperty -Path "HKCU:\Software\bohemia interactive\Dayz Tools").path)\Bin\AddonBuilder\AddonBuilder.exe" "P:\${ModName}\MoreDoors".ToLower() "P:\@${ModName}\addons" "-clear" "-project=P:\${ModName}" "-sign=$env:BIPRIVATEKEY_PATH" "-packonly" "-include=include.lst"
 $buildcode = $lastexitcode
 $builderror = $errorMessage
 
@@ -31,4 +31,4 @@ Set-Content -Path "$ModCppFile" -Value "$originalModCpp" -NoNewLine
 
 if ($buildcode -ne 0) { throw ("Exec: " + $builderror) }
 
-Copy-Item $env:BIKEY_PATH -Destination "P:\@${ModName}\Keys"
+Copy-Item $env:BIKEY_PATH -Destination "P:\@${ModName}\keys"
