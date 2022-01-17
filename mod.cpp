@@ -1,4 +1,11 @@
-name = "MasPuertas";
-tooltip = "MasPuertas";
-overview = "MasPuertas";
+name = "$STR_MasPuertas_mod_name";
+picture = "MoreDoors/GUI/textures/maspuertas.paa";
+logoSmall = "MoreDoors/GUI/textures/maspuertas.paa";
+logo = "MoreDoors/GUI/textures/maspuertas.paa";
+logoOver = "MoreDoors/GUI/textures/maspuertas-hover.paa";
+tooltip = "$STR_MasPuertas_mod_tooltip";
+overview = "$STR_MasPuertas_mod_overview";
+action = "https://steamcommunity.com/sharedfiles/filedetails/?id=2586738813";
+author = "$STR_MasPuertas_mod_author";
+authorID = "76561197970002375";
 version = "dev";
