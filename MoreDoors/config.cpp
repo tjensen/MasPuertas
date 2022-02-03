@@ -648,9 +648,11 @@ class CfgVehicles
         displayName="Small Safe";
         descriptionShort="Just A Safe, you can lock this with a combo lock or codelock";
         model="MoreDoors\data\Safe\MoreDoor_Safe.p3d";
+        weight=60000;
         itemsCargoSize[]={9,9};
-        itemSize[]={5,5};
-        itemBehaviour=2;
+        itemSize[]={10,10};
+        itemBehaviour=0;
+        heavyItem=1;
         class Cargo
         {
             itemsCargoSize[]={9,9};

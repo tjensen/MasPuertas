@@ -342,6 +342,13 @@ class MoreDoorSafe extends MoreDoorBase
     const string SOUND_SAFE_CLOSE_START     = "MoreDoor_doorMetalSmallClose_SoundSet";
     const string SOUND_SAFE_CLOSE_END       = "combinationlock_close_SoundSet";
 
+    override void SetActions()
+    {
+        super.SetActions();
+
+        AddAction(ActionTakeItemToHands);
+    }
+
     override bool CanPutInCargo( EntityAI parent )
     {
         if ( GetNumberOfItems() == 0 && !IsOpened() && !IsLocked() )
