@@ -661,20 +661,14 @@ class CfgVehicles
         };
         class GUIInventoryAttachmentsProps
         {
-            class Base
-            {
-                attachmentSlots[]={};
-            };
             class Attachments
             {
-                attachmentSlots[]={
-                    "Att_CombinationLock"
-                };
+                name="$STR_CfgVehicles_Fence_Att_Category_Attachments";
+                description="";
+                attachmentSlots[]={"Att_CombinationLock"};
+                icon="cat_bb_attachments";
+                selection="wall";
             };
-            class Material
-            {
-                attachmentSlots[]={};
-            }
         };
         class Cargo
         {

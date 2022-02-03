@@ -349,6 +349,16 @@ class MoreDoorSafe extends MoreDoorBase
         AddAction(ActionTakeItemToHands);
     }
 
+    override bool CanDisplayAttachmentCategory(string category_name)
+    {
+        if (category_name != "Attachments")
+        {
+            return false;
+        }
+
+        return super.CanDisplayAttachmentCategory(category_name);
+    }
+
     override bool CanPutInCargo( EntityAI parent )
     {
         if ( GetNumberOfItems() == 0 && !IsOpened() && !IsLocked() )
