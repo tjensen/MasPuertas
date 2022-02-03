@@ -653,6 +653,29 @@ class CfgVehicles
         itemSize[]={10,10};
         itemBehaviour=0;
         heavyItem=1;
+        hybridAttachments[]={};
+        mountables[]={};
+        attachments[]=
+        {
+            "Att_CombinationLock"
+        };
+        class GUIInventoryAttachmentsProps
+        {
+            class Base
+            {
+                attachmentSlots[]={};
+            };
+            class Attachments
+            {
+                attachmentSlots[]={
+                    "Att_CombinationLock"
+                };
+            };
+            class Material
+            {
+                attachmentSlots[]={};
+            }
+        };
         class Cargo
         {
             itemsCargoSize[]={9,9};
