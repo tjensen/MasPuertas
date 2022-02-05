@@ -1,23 +1,5 @@
 class MoreDoorBase extends Fence
 {
-    //protected bool            m_DismantleDisabled;
-
-    // void MoreDoorBase()
-    // {
-    //  RegisterNetSyncVariableBool( "m_DismantleDisabled" );
-    // }
-
-    // bool DismantleDisabled()
-    // {
-    //  return m_DismantleDisabled;
-    // }
-
-    // void SetDismantleAbility( bool state )
-    // {
-    //  m_DismantleDisabled = state;
-    //  SetSynchDirty();
-    // }
-
     bool HasGate()
     {
         return true;
@@ -31,12 +13,6 @@ class MoreDoorBase extends Fence
     bool IsMoreDoor()
     {
         return true;
-    }
-
-    override void AfterStoreLoad()
-    {
-        SetGateState( true );
-        SetBaseState( true );
     }
 
     string j_moreDoorKit()
@@ -92,18 +68,6 @@ class MoreDoorBase extends Fence
         }
     }
 
-    override void SetPartsAfterStoreLoad()
-    {
-        //update server data
-        SetPartsFromSyncData();
-
-        //set base state
-        SetBaseState( true ) ;
-
-        //synchronize after load
-        SynchronizeBaseState();
-    }
-
     override bool NameOverride(out string output)
     {
         return false;
@@ -136,46 +100,6 @@ class MoreDoorBase extends Fence
         RemoveAction(ActionOpenFence);
         RemoveAction(ActionCloseFence);
     }
-
-    // override void OnStoreSave( ParamsWriteContext ctx )
-    // {
-    //  super.OnStoreSave( ctx );
-
-    //  //write
-    //  ctx.Write( m_DismantleDisabled );
-    // }
-
-    // override bool OnStoreLoad( ParamsReadContext ctx, int version )
-    // {
-    //  if ( !super.OnStoreLoad( ctx, version ) )
-    //      return false;
-
-    //  //is opened
-    //  if ( !ctx.Read( m_IsOpened ) )
-    //  {
-    //      m_IsOpened = false;
-    //      return false;
-    //  }
-
-    //  if ( !ctx.Read( m_DismantleDisabled ) )
-    //  {
-    //      m_DismantleDisabled = false;
-    //      return false;
-    //  }
-
-    //  return true;
-    // }
-
-    // override void EEItemDetached ( EntityAI item, string slot_name )
-    // {
-    //  super.EEItemDetached ( item, slot_name );
-
-    //  if(DismantleDisabled())
-    //  {
-    //      SetDismantleAbility(false);
-    //  }
-    // }
-
 };
 
 class MoreDoorVault extends MoreDoorBase
@@ -213,17 +137,6 @@ class MoreDoorVault extends MoreDoorBase
     {
         return false;
     }
-
-    override void SetActions()
-    {
-        super.SetActions();
-
-        RemoveAction(ActionOpenMoreDoor);
-        AddAction(ActionOpenFence);
-    }
-
-
-
 };
 
 class MoreDoorSmall extends MoreDoorBase
@@ -264,7 +177,6 @@ class MoreDoorBarricade extends MoreDoorBase
 
     override void SetActions()
     {
-
     }
 
     bool hasTheGoodStuff()
@@ -286,24 +198,6 @@ class MoreDoorBarricade extends MoreDoorBase
         return false;
     }
 
-    // override bool CanReceiveAttachment( EntityAI attachment, int slotId )
-    // {
-    //  int slot_id = InventorySlots.GetSlotIdFromString("Material_MetalSheets");
-    //  ItemBase slotCast = ItemBase.Cast( GetInventory().FindAttachment(slot_id) );
-    //  ItemBase m_attachment = ItemBase.Cast(attachment);
-
-    //  int j_Count = slotCast.GetQuantity();
-    //  int attachmentQuantity = m_attachment.GetQuantity();
-    //  int remainingSlots = 3 - attachmentQuantity;
-
-    //  if ( j_Count >= 3 || attachmentQuantity >= remainingSlots )
-    //  {
-    //      return false;
-    //  }
-
-    //  return true;
-    // }
-
     override void UpdateAttachmentPhysics( string slot_name, bool is_locked )
     {
 
@@ -313,9 +207,6 @@ class MoreDoorBarricade extends MoreDoorBase
     {
 
     }
-
-
-
 };
 
 class MoreDoorMetalBarricade extends MoreDoorBase
@@ -332,7 +223,6 @@ class MoreDoorMetalBarricade extends MoreDoorBase
 
     override void SetActions()
     {
-
     }
 };
 
@@ -464,5 +354,6 @@ class MoreDoorSafe extends MoreDoorBase
     {
         PlaySoundSet( m_SoundGate_End, SOUND_SAFE_CLOSE_END, 0.1, 0.1 );
     }
-
 };
+
+// vim:ft=enforce
