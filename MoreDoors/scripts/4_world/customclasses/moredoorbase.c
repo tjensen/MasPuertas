@@ -96,9 +96,14 @@ class MoreDoorBase extends Fence
         return true;
     }
 
-    override bool CanDisplayAttachmentCategory( string category_name )
+    override bool CanDisplayAttachmentCategory(string category_name)
     {
-        return true;
+        if (category_name != "Base")
+        {
+            return false;
+        }
+
+        return super.CanDisplayAttachmentCategory(category_name);
     }
 
     override bool CanReceiveAttachment(EntityAI attachment, int slotId)
@@ -202,6 +207,11 @@ class MoreDoorBarricade extends MoreDoorBase
     {
     }
 
+    override bool CanDisplayAttachmentCategory(string category_name)
+    {
+        return true;
+    }
+
     bool hasTheGoodStuff()
     {
         int metalCost = 3;
@@ -223,12 +233,10 @@ class MoreDoorBarricade extends MoreDoorBase
 
     override void UpdateAttachmentPhysics( string slot_name, bool is_locked )
     {
-
     }
 
     override void UpdateAttachmentVisuals( string slot_name, bool is_locked )
     {
-
     }
 };
 
@@ -241,7 +249,6 @@ class MoreDoorMetalBarricade extends MoreDoorBase
 
     override void EEItemDetached ( EntityAI item, string slot_name )
     {
-
     }
 
     override void SetActions()
@@ -260,16 +267,6 @@ class MoreDoorSafe extends MoreDoorBase
         super.SetActions();
 
         AddAction(ActionTakeItemToHands);
-    }
-
-    override bool CanDisplayAttachmentCategory(string category_name)
-    {
-        if (category_name != "Attachments")
-        {
-            return false;
-        }
-
-        return super.CanDisplayAttachmentCategory(category_name);
     }
 
     override bool CanPutInCargo( EntityAI parent )

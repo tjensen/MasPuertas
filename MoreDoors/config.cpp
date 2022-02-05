@@ -638,6 +638,7 @@ class CfgVehicles
         displayName="Metal Barricade";
         descriptionShort="Just A Barricade, you must be bored if your bothering to read the description on some door...";
         model="MoreDoors\data\windowbarricade\windowbarricademetal.p3d";
+        attachments[]={};
         class GUIInventoryAttachmentsProps
         {
         };
@@ -658,17 +659,6 @@ class CfgVehicles
         attachments[]=
         {
             "Att_CombinationLock"
-        };
-        class GUIInventoryAttachmentsProps
-        {
-            class Attachments
-            {
-                name="$STR_CfgVehicles_Fence_Att_Category_Attachments";
-                description="";
-                attachmentSlots[]={"Att_CombinationLock"};
-                icon="cat_bb_attachments";
-                selection="wall";
-            };
         };
         class Cargo
         {
