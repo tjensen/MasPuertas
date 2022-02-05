@@ -69,3 +69,5 @@ class craft_MoreDoorSmall extends RecipeBase
         Debug.Log("Recipe Do method called","recipes");
     }
 };
+
+// vim:ft=enforce
