@@ -74,6 +74,18 @@ class MoreDoorBase extends Fence
         }
     }
 
+    override void SetPartsAfterStoreLoad()
+    {
+        //update server data
+        SetPartsFromSyncData();
+
+        //set base state
+        SetBaseState(true);
+
+        //synchronize after load
+        SynchronizeBaseState();
+    }
+
     override bool NameOverride(out string output)
     {
         return false;
@@ -303,15 +315,25 @@ class MoreDoorSafe extends MoreDoorBase
     override void CloseFence()
     {
         super.CloseFence();
-        GetInventory().LockInventory(HIDE_INV_FROM_SCRIPT);
 
+        GetInventory().LockInventory(HIDE_INV_FROM_SCRIPT);
     }
 
     override void AfterStoreLoad()
     {
         SetGateState( true );
         SetBaseState( true );
-        GetInventory().LockInventory(HIDE_INV_FROM_SCRIPT);
+
+        if (IsOpened())
+        {
+            OpenFence();
+        }
+        else
+        {
+            GetInventory().LockInventory(HIDE_INV_FROM_SCRIPT);
+        }
+
+        UpdateVisuals();
     }
 
     override void EEItemAttached ( EntityAI item, string slot_name )
@@ -343,7 +365,14 @@ class MoreDoorSafe extends MoreDoorBase
     {
         super.EEInit();
 
-        GetInventory().LockInventory(HIDE_INV_FROM_SCRIPT);
+        if (IsOpened())
+        {
+            OpenFence();
+        }
+        else
+        {
+            GetInventory().LockInventory(HIDE_INV_FROM_SCRIPT);
+        }
     }
 
     override bool AllowDismantle()
