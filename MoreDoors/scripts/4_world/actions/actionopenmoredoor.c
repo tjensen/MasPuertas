@@ -1,21 +1,9 @@
-class ActionOpenMoreDoor : ActionInteractBase
+class ActionOpenMoreDoor : ActionOpenFence
 {
-    void ActionOpenMoreDoor()
-    {
-        m_CommandUID = DayZPlayerConstants.CMD_ACTIONMOD_OPENDOORFW;
-        m_StanceMask = DayZPlayerConstants.STANCEMASK_CROUCH | DayZPlayerConstants.STANCEMASK_ERECT;
-        m_HUDCursorIcon = CursorIcons.OpenDoors;
-    }
-
     override void CreateConditionComponents()
     {
         m_ConditionItem = new CCINone;
         m_ConditionTarget = new CCTObject(UAMaxDistances.DEFAULT * 2);
-    }
-
-    override string GetText()
-    {
-        return "#open";
     }
 
     override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
@@ -32,12 +20,6 @@ class ActionOpenMoreDoor : ActionInteractBase
         }
 
         return false;
-    }
-
-    override void OnStartServer(ActionData action_data)
-    {
-        MoreDoorBase fence = MoreDoorBase.Cast(action_data.m_Target.GetObject());
-        fence.OpenFence();
     }
 };
 

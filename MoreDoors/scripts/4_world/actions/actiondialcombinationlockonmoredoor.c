@@ -1,41 +1,9 @@
-class ActionDialCombinationLockOnMoreDoor : ActionContinuousBase
+class ActionDialCombinationLockOnMoreDoor : ActionDialCombinationLockOnTarget
 {
-    void ActionDialCombinationLockOnMoreDoor()
-    {
-        m_CallbackClass = ActionDialCombinationLockOnTargetCB;
-        m_CommandUID = DayZPlayerConstants.CMD_ACTIONMOD_OPENITEM;
-        m_CommandUIDProne = DayZPlayerConstants.CMD_ACTIONMOD_OPENITEM;
-        m_SpecialtyWeight = UASoftSkillsWeight.ROUGH_LOW;
-    }
-
     override void CreateConditionComponents()
     {
         m_ConditionItem = new CCINotPresent;
         m_ConditionTarget = new CCTNonRuined(UAMaxDistances.DEFAULT * 2);
-    }
-
-    override bool HasProneException()
-    {
-        return true;
-    }
-
-    override string GetText()
-    {
-        PlayerBase player = PlayerBase.Cast(GetGame().GetPlayer());
-        string combination_lock_text;
-
-        if (player)
-        {
-            ConstructionActionData construction_action_data = player.GetConstructionActionData();
-            combination_lock_text = construction_action_data.GetDialNumberText();
-        }
-
-        return "#dial_combination_lock" + " " + combination_lock_text;
-    }
-
-    override typename GetInputType()
-    {
-        return ContinuousInteractActionInput;
     }
 
     override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
