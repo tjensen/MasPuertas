@@ -124,7 +124,7 @@ class MoreDoorVault extends MoreDoorBase
 {
     const string SOUND_SAFE_OPEN_START      = "MoreDoor_doorMetalSlideLargeOpen_SoundSet";
     const string SOUND_SAFE_CLOSE_START     = "MoreDoor_doorMetalSlideLargeClose_SoundSet";
-    const string SOUND_SAFE_CLOSE_END       = "MoreDoor_doorMetalGateClose_SoundShader";
+    const string SOUND_SAFE_CLOSE_END       = "MoreDoor_doorMetalGateClose_SoundSet";
 
     override bool CanBeInteractedWithBy(EntityAI entity)
     {
