@@ -1,4 +1,4 @@
-class ActionOpenMoreDoor: ActionInteractBase
+class ActionOpenMoreDoor : ActionInteractBase
 {
     void ActionOpenMoreDoor()
     {
@@ -10,7 +10,7 @@ class ActionOpenMoreDoor: ActionInteractBase
     override void CreateConditionComponents()
     {
         m_ConditionItem = new CCINone;
-        m_ConditionTarget = new CCTObject(UAMaxDistances.DEFAULT);
+        m_ConditionTarget = new CCTObject(UAMaxDistances.DEFAULT * 2);
     }
 
     override string GetText()
@@ -18,14 +18,14 @@ class ActionOpenMoreDoor: ActionInteractBase
         return "#open";
     }
 
-    override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+    override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
     {
         Object targetObject = target.GetObject();
-        if ( targetObject && targetObject.CanUseConstruction() )
+        if (targetObject && targetObject.CanUseConstruction())
         {
-            MoreDoorBase fence = MoreDoorBase.Cast( targetObject );
+            MoreDoorBase fence = MoreDoorBase.Cast(targetObject);
 
-            if ( fence && fence.CanOpenFence() )
+            if (fence && fence.CanOpenFence() && fence.CanBeInteractedWithBy(player))
             {
                 return true;
             }
@@ -34,9 +34,11 @@ class ActionOpenMoreDoor: ActionInteractBase
         return false;
     }
 
-    override void OnStartServer( ActionData action_data )
+    override void OnStartServer(ActionData action_data)
     {
-        MoreDoorBase fence = MoreDoorBase.Cast( action_data.m_Target.GetObject() );
+        MoreDoorBase fence = MoreDoorBase.Cast(action_data.m_Target.GetObject());
         fence.OpenFence();
     }
-}
+};
+
+// vim:ft=enforce

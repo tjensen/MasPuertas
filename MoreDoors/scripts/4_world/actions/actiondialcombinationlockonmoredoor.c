@@ -1,4 +1,4 @@
-class ActionDialCombinationLockOnMoreDoor: ActionContinuousBase
+class ActionDialCombinationLockOnMoreDoor : ActionContinuousBase
 {
     void ActionDialCombinationLockOnMoreDoor()
     {
@@ -11,7 +11,7 @@ class ActionDialCombinationLockOnMoreDoor: ActionContinuousBase
     override void CreateConditionComponents()
     {
         m_ConditionItem = new CCINotPresent;
-        m_ConditionTarget = new CCTNonRuined(UAMaxDistances.DEFAULT);
+        m_ConditionTarget = new CCTNonRuined(UAMaxDistances.DEFAULT * 2);
     }
 
     override bool HasProneException()
@@ -45,7 +45,7 @@ class ActionDialCombinationLockOnMoreDoor: ActionContinuousBase
         {
             MoreDoorBase fence = MoreDoorBase.Cast(targetObject);
 
-            if (fence && fence.IsLocked())
+            if (fence && fence.IsLocked() && fence.CanBeInteractedWithBy(player))
             {
                 ConstructionActionData construction_action_data = player.GetConstructionActionData();
                 construction_action_data.SetCombinationLock(fence.GetCombinationLock());

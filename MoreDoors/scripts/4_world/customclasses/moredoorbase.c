@@ -35,6 +35,11 @@ class MoreDoorBase extends Fence
         return false;
     }
 
+    bool CanBeInteractedWithBy(EntityAI entity)
+    {
+        return vector.Distance(GetPosition(), entity.GetPosition()) <= UAMaxDistances.DEFAULT;
+    }
+
     override bool CanCloseFence()
     {
         if ( IsOpened() )
@@ -107,6 +112,11 @@ class MoreDoorVault extends MoreDoorBase
     const string SOUND_SAFE_OPEN_START      = "MoreDoor_doorMetalSlideLargeOpen_SoundSet";
     const string SOUND_SAFE_CLOSE_START     = "MoreDoor_doorMetalSlideLargeClose_SoundSet";
     const string SOUND_SAFE_CLOSE_END       = "MoreDoor_doorMetalGateClose_SoundShader";
+
+    override bool CanBeInteractedWithBy(EntityAI entity)
+    {
+        return vector.Distance(GetPosition(), entity.GetPosition()) <= (UAMaxDistances.DEFAULT * 2);
+    }
 
     override string j_moreDoorKit()
     {
