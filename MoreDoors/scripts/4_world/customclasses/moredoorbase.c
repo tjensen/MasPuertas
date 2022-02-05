@@ -55,11 +55,12 @@ class MoreDoorBase extends Fence
         //server or single player
         if ( GetGame().IsServer() )
         {
-            SetAnimationPhase( "Wall_Gate_Rotate",                  2 );
+            SetAnimationPhase("Wall_Gate_Rotate", 2);
             SetOpenedState( true );
 
             //regenerate navmesh
-            GetGame().GetCallQueue( CALL_CATEGORY_GAMEPLAY ).CallLater( UpdateNavmesh, GATE_ROTATION_TIME_APPROX, false );
+            GetGame().GetCallQueue( CALL_CATEGORY_GAMEPLAY ).CallLater(
+                UpdateNavmesh, GATE_ROTATION_TIME_APPROX, false);
 
             //synchronize
             SynchronizeBaseState();
@@ -295,6 +296,7 @@ class MoreDoorSafe extends MoreDoorBase
     override void OpenFence()
     {
         super.OpenFence();
+
         GetInventory().UnlockInventory(HIDE_INV_FROM_SCRIPT);
     }
 
@@ -314,9 +316,9 @@ class MoreDoorSafe extends MoreDoorBase
 
     override void EEItemAttached ( EntityAI item, string slot_name )
     {
-        super.EEItemAttached ( item, slot_name );
+        super.EEItemAttached (item, slot_name);
 
-        if ( slot_name == "Att_CombinationLock" )
+        if (slot_name == "Att_CombinationLock")
         {
             CloseFence();
         }
@@ -324,13 +326,12 @@ class MoreDoorSafe extends MoreDoorBase
 
     override void EEItemDetached ( EntityAI item, string slot_name )
     {
-        super.EEItemDetached ( item, slot_name );
+        super.EEItemDetached (item, slot_name);
 
-        if ( slot_name == "Att_CombinationLock" )
+        if (slot_name == "Att_CombinationLock")
         {
             OpenFence();
         }
-
     }
 
     override bool AllowDestruction()
