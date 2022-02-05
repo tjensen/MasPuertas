@@ -101,9 +101,9 @@ class MoreDoorBase extends Fence
         return true;
     }
 
-    override bool CanReceiveAttachment( EntityAI attachment, int slotId )
+    override bool CanReceiveAttachment(EntityAI attachment, int slotId)
     {
-        return true;
+        return !IsOpened();
     }
 
     override void SetActions()
@@ -251,7 +251,7 @@ class MoreDoorMetalBarricade extends MoreDoorBase
 
 class MoreDoorSafe extends MoreDoorBase
 {
-    const string SOUND_SAFE_OPEN_START          = "MoreDoor_doorMetalSmallOpen_SoundSet";
+    const string SOUND_SAFE_OPEN_START      = "MoreDoor_doorMetalSmallOpen_SoundSet";
     const string SOUND_SAFE_CLOSE_START     = "MoreDoor_doorMetalSmallClose_SoundSet";
     const string SOUND_SAFE_CLOSE_END       = "combinationlock_close_SoundSet";
 
@@ -284,6 +284,13 @@ class MoreDoorSafe extends MoreDoorBase
     override bool IsTwoHandedBehaviour()
     {
         return true;
+    }
+
+    override bool CanReceiveAttachment(EntityAI attachment, int slotId)
+    {
+        // The inventory is locked when the safe is closed, so only allow locks to be attached when
+        // the safe is open. The door will be closed automatically after a lock is attached.
+        return IsOpened();
     }
 
     override bool CanPutIntoHands(EntityAI parent)
@@ -336,23 +343,13 @@ class MoreDoorSafe extends MoreDoorBase
         UpdateVisuals();
     }
 
-    override void EEItemAttached ( EntityAI item, string slot_name )
+    override void EEItemAttached(EntityAI item, string slot_name)
     {
-        super.EEItemAttached (item, slot_name);
+        super.EEItemAttached(item, slot_name);
 
         if (slot_name == "Att_CombinationLock")
         {
             CloseFence();
-        }
-    }
-
-    override void EEItemDetached ( EntityAI item, string slot_name )
-    {
-        super.EEItemDetached (item, slot_name);
-
-        if (slot_name == "Att_CombinationLock")
-        {
-            OpenFence();
         }
     }
 
