@@ -3,7 +3,7 @@ class ActionDestroyMoreDoorCB : ActionContinuousBaseCB
     override void CreateActionComponent()
     {
         Object targetObject = m_ActionData.m_Target.GetObject();
-        int raidTime = g_Game.GetMoreDoorConfig().Get_MoreDoorDestroyTime(targetObject.GetType());
+        int raidTime = MissionBaseWorld.GetMoreDoorConfig().Get_MoreDoorDestroyTime(targetObject.GetType());
         m_ActionData.m_ActionComponent = new CAContinuousTime( raidTime );
     }
 };
@@ -52,7 +52,7 @@ class ActionDestroyMoreDoor: ActionContinuousBase
 
     bool HasFancyRaidTools(ItemBase item_in_hands)
     {
-        TStringArray j_raidingTools = g_Game.GetMoreDoorConfig().Get_MoreDoorRaidTools();
+        TStringArray j_raidingTools = MissionBaseWorld.GetMoreDoorConfig().Get_MoreDoorRaidTools();
 
         foreach (string tool : j_raidingTools)
         {
@@ -66,7 +66,7 @@ class ActionDestroyMoreDoor: ActionContinuousBase
 
     bool CfgAllowDestruct()
     {
-        return g_Game.GetMoreDoorConfig().Get_CanDestroyMoreDoor();
+        return MissionBaseWorld.GetMoreDoorConfig().Get_CanDestroyMoreDoor();
     }
 
     override bool ActionConditionContinue( ActionData action_data )
@@ -77,7 +77,7 @@ class ActionDestroyMoreDoor: ActionContinuousBase
     override void OnFinishProgressServer( ActionData action_data )
     {
         MoreDoorBase base_building = MoreDoorBase.Cast( action_data.m_Target.GetObject() );
-        int damageToTool = g_Game.GetMoreDoorConfig().Get_MoreDoorToolDamage();
+        int damageToTool = MissionBaseWorld.GetMoreDoorConfig().Get_MoreDoorToolDamage();
 
         base_building.Delete();
 

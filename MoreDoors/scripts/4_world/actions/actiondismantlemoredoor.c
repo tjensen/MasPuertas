@@ -4,7 +4,7 @@ class ActionDismantleMoreDoorCB : ActionContinuousBaseCB
 
 	override void CreateActionComponent()
 	{
-		dismantleTime = g_Game.GetMoreDoorConfig().Get_MoreDoorDismantleTime();
+		dismantleTime = MissionBaseWorld.GetMoreDoorConfig().Get_MoreDoorDismantleTime();
 		
 		m_ActionData.m_ActionComponent = new CAContinuousTime( dismantleTime );
 	}

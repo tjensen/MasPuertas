@@ -34,7 +34,7 @@ class ActionDestroyCombinationLockMoreDoor: ActionContinuousBase
 		string selection = target_object.GetActionComponentName( target.GetComponentIndex() );
 		MoreDoorBase fence = MoreDoorBase.Cast( target_object );
 		
-		if ( fence && fence.IsLocked() && g_Game.GetMoreDoorConfig().Get_CanCutComboLock() )
+		if ( fence && fence.IsLocked() && MissionBaseWorld.GetMoreDoorConfig().Get_CanCutComboLock() )
 		{
 			return true;
 		}

@@ -7,6 +7,7 @@ class MoreDoorConfig
     private bool CanDestroyMoreDoor = true;
     private bool CanCutComboLock = true;
     private bool CanCraftDoorKits = true;
+    private bool EnableVanillaRaiding = false;
     private ref array<string> MoreDoorRaidTools;
     private int MoreDoorShantyDestroyTime;
     private int MoreDoorDestroyTime;
@@ -57,6 +58,7 @@ class MoreDoorConfig
         CanDestroyMoreDoor = true;
         CanCutComboLock = true;
         CanCraftDoorKits = true;
+        EnableVanillaRaiding = false;
 
         MoreDoorRaidTools = { "Hatchet", "Sledgehammer", "FirefighterAxe", "WoodAxe"};
 
@@ -84,6 +86,11 @@ class MoreDoorConfig
     bool Get_CanCraftDoorKits()
     {
         return CanCraftDoorKits;
+    }
+
+    bool Get_EnableVanillaRaiding()
+    {
+        return EnableVanillaRaiding;
     }
 
     array<string> Get_MoreDoorRaidTools()
