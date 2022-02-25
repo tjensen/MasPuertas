@@ -57,7 +57,7 @@ class craft_MoreDoorBarricade extends RecipeBase
 
     override bool CanDo(ItemBase ingredients[], PlayerBase player)//final check for recipe's validity
     {
-        if( g_Game.GetMoreDoorConfig().Get_CanCraftDoorKits() )
+        if( MissionBaseWorld.GetMoreDoorConfig().Get_CanCraftDoorKits() )
         {
             return true;
         }

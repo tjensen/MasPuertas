@@ -585,6 +585,97 @@ class CfgVehicles
             {
             };
         };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints=100000;
+                    healthLevels[]=
+                    {
+                        {
+                            1,
+                            {
+                                ""
+                            }
+                        },
+                        {
+                            0.69999999,
+                            {
+                                ""
+                            }
+                        },
+                        {
+                            0.5,
+                            {
+                                ""
+                            }
+                        },
+                        {
+                            0.30000001,
+                            {
+                                ""
+                            }
+                        },
+                        {
+                            0,
+                            {
+                                ""
+                            }
+                        }
+                    };
+                };
+            };
+            class GlobalArmor
+            {
+                class Projectile
+                {
+                    class Health
+                    {
+                        damage=1;
+                    };
+                    class Blood
+                    {
+                        damage=0;
+                    };
+                    class Shock
+                    {
+                        damage=0;
+                    };
+                };
+                class Melee
+                {
+                    class Health
+                    {
+                        damage=0.64999998;
+                    };
+                    class Blood
+                    {
+                        damage=0;
+                    };
+                    class Shock
+                    {
+                        damage=0;
+                    };
+                };
+                class FragGrenade
+                {
+                    class Health
+                    {
+                        damage=30;
+                    };
+                    class Blood
+                    {
+                        damage=0;
+                    };
+                    class Shock
+                    {
+                        damage=0;
+                    };
+                };
+            };
+        };
     };
     class MoreDoorSmall: MoreDoorBase
     {
@@ -592,6 +683,97 @@ class CfgVehicles
         displayName="Small Door";
         descriptionShort="Small wooden door.";
         model="MoreDoors\data\Wood\MoreDoor_Wood.p3d";
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints=28000;
+                    healthLevels[]=
+                    {
+                        {
+                            1,
+                            {
+                                "DZ\gear\camping\data\fence_pile_of_planks.rvmat"
+                            }
+                        },
+                        {
+                            0.69999999,
+                            {
+                                "DZ\gear\camping\data\fence_pile_of_planks.rvmat"
+                            }
+                        },
+                        {
+                            0.5,
+                            {
+                                "DZ\gear\camping\data\fence_pile_of_planks_damage.rvmat"
+                            }
+                        },
+                        {
+                            0.30000001,
+                            {
+                                "DZ\gear\camping\data\fence_pile_of_planks_damage.rvmat"
+                            }
+                        },
+                        {
+                            0,
+                            {
+                                "DZ\gear\camping\data\fence_pile_of_planks_destruct.rvmat"
+                            }
+                        }
+                    };
+                };
+            };
+            class GlobalArmor
+            {
+                class Projectile
+                {
+                    class Health
+                    {
+                        damage=1;
+                    };
+                    class Blood
+                    {
+                        damage=0;
+                    };
+                    class Shock
+                    {
+                        damage=0;
+                    };
+                };
+                class Melee
+                {
+                    class Health
+                    {
+                        damage=0.64999998;
+                    };
+                    class Blood
+                    {
+                        damage=0;
+                    };
+                    class Shock
+                    {
+                        damage=0;
+                    };
+                };
+                class FragGrenade
+                {
+                    class Health
+                    {
+                        damage=50;
+                    };
+                    class Blood
+                    {
+                        damage=0;
+                    };
+                    class Shock
+                    {
+                        damage=0;
+                    };
+                };
+            };
+        };
     };
     class MoreDoorSmallShanty: MoreDoorBase
     {
@@ -599,6 +781,97 @@ class CfgVehicles
         displayName="Small Shanty Door";
         descriptionShort="Small rickety door.";
         model="MoreDoors\data\Shanty\MoreDoor_Shanty.p3d";
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints=16000;
+                    healthLevels[]=
+                    {
+                        {
+                            1,
+                            {
+                                "DZ\gear\camping\data\fence_pile_of_planks.rvmat"
+                            }
+                        },
+                        {
+                            0.69999999,
+                            {
+                                "DZ\gear\camping\data\fence_pile_of_planks.rvmat"
+                            }
+                        },
+                        {
+                            0.5,
+                            {
+                                "DZ\gear\camping\data\fence_pile_of_planks_damage.rvmat"
+                            }
+                        },
+                        {
+                            0.30000001,
+                            {
+                                "DZ\gear\camping\data\fence_pile_of_planks_damage.rvmat"
+                            }
+                        },
+                        {
+                            0,
+                            {
+                                "DZ\gear\camping\data\fence_pile_of_planks_destruct.rvmat"
+                            }
+                        }
+                    };
+                };
+            };
+            class GlobalArmor
+            {
+                class Projectile
+                {
+                    class Health
+                    {
+                        damage=1;
+                    };
+                    class Blood
+                    {
+                        damage=0;
+                    };
+                    class Shock
+                    {
+                        damage=0;
+                    };
+                };
+                class Melee
+                {
+                    class Health
+                    {
+                        damage=0.64999998;
+                    };
+                    class Blood
+                    {
+                        damage=0;
+                    };
+                    class Shock
+                    {
+                        damage=0;
+                    };
+                };
+                class FragGrenade
+                {
+                    class Health
+                    {
+                        damage=50;
+                    };
+                    class Blood
+                    {
+                        damage=0;
+                    };
+                    class Shock
+                    {
+                        damage=0;
+                    };
+                };
+            };
+        };
     };
     class MoreDoorSmallMetal: MoreDoorBase
     {
@@ -606,6 +879,97 @@ class CfgVehicles
         displayName="Small Metal Door";
         descriptionShort="Small metal door.";
         model="MoreDoors\data\Metal\MoreDoor_Metal.p3d";
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints=37000;
+                    healthLevels[]=
+                    {
+                        {
+                            1,
+                            {
+                                "DZ\gear\camping\data\fence_metalsheets.rvmat"
+                            }
+                        },
+                        {
+                            0.69999999,
+                            {
+                                "DZ\gear\camping\data\fence_metalsheets_worn.rvmat"
+                            }
+                        },
+                        {
+                            0.5,
+                            {
+                                "DZ\gear\camping\data\fence_metalsheets_damage.rvmat"
+                            }
+                        },
+                        {
+                            0.30000001,
+                            {
+                                "DZ\gear\camping\data\fence_metalsheets_bdamage.rvmat"
+                            }
+                        },
+                        {
+                            0,
+                            {
+                                "DZ\gear\camping\data\fence_metalsheets_bdamage.rvmat"
+                            }
+                        }
+                    };
+                };
+            };
+            class GlobalArmor
+            {
+                class Projectile
+                {
+                    class Health
+                    {
+                        damage=1;
+                    };
+                    class Blood
+                    {
+                        damage=0;
+                    };
+                    class Shock
+                    {
+                        damage=0;
+                    };
+                };
+                class Melee
+                {
+                    class Health
+                    {
+                        damage=0.64999998;
+                    };
+                    class Blood
+                    {
+                        damage=0;
+                    };
+                    class Shock
+                    {
+                        damage=0;
+                    };
+                };
+                class FragGrenade
+                {
+                    class Health
+                    {
+                        damage=40;
+                    };
+                    class Blood
+                    {
+                        damage=0;
+                    };
+                    class Shock
+                    {
+                        damage=0;
+                    };
+                };
+            };
+        };
     };
     class MoreDoorBarricade: MoreDoorBase
     {
@@ -631,6 +995,97 @@ class CfgVehicles
                 selection="wall";
             };
         };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints=15000;
+                    healthLevels[]=
+                    {
+                        {
+                            1,
+                            {
+                                "DZ\gear\camping\data\fence_pile_of_planks.rvmat"
+                            }
+                        },
+                        {
+                            0.69999999,
+                            {
+                                "DZ\gear\camping\data\fence_pile_of_planks.rvmat"
+                            }
+                        },
+                        {
+                            0.5,
+                            {
+                                "DZ\gear\camping\data\fence_pile_of_planks_damage.rvmat"
+                            }
+                        },
+                        {
+                            0.30000001,
+                            {
+                                "DZ\gear\camping\data\fence_pile_of_planks_damage.rvmat"
+                            }
+                        },
+                        {
+                            0,
+                            {
+                                "DZ\gear\camping\data\fence_pile_of_planks_destruct.rvmat"
+                            }
+                        }
+                    };
+                };
+            };
+            class GlobalArmor
+            {
+                class Projectile
+                {
+                    class Health
+                    {
+                        damage=1;
+                    };
+                    class Blood
+                    {
+                        damage=0;
+                    };
+                    class Shock
+                    {
+                        damage=0;
+                    };
+                };
+                class Melee
+                {
+                    class Health
+                    {
+                        damage=0.64999998;
+                    };
+                    class Blood
+                    {
+                        damage=0;
+                    };
+                    class Shock
+                    {
+                        damage=0;
+                    };
+                };
+                class FragGrenade
+                {
+                    class Health
+                    {
+                        damage=50;
+                    };
+                    class Blood
+                    {
+                        damage=0;
+                    };
+                    class Shock
+                    {
+                        damage=0;
+                    };
+                };
+            };
+        };
     };
     class MoreDoorMetalBarricade: MoreDoorBase
     {
@@ -641,6 +1096,97 @@ class CfgVehicles
         attachments[]={};
         class GUIInventoryAttachmentsProps
         {
+        };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints=30000;
+                    healthLevels[]=
+                    {
+                        {
+                            1,
+                            {
+                                "DZ\gear\camping\data\fence_metalsheets.rvmat"
+                            }
+                        },
+                        {
+                            0.69999999,
+                            {
+                                "DZ\gear\camping\data\fence_metalsheets_worn.rvmat"
+                            }
+                        },
+                        {
+                            0.5,
+                            {
+                                "DZ\gear\camping\data\fence_metalsheets_damage.rvmat"
+                            }
+                        },
+                        {
+                            0.30000001,
+                            {
+                                "DZ\gear\camping\data\fence_metalsheets_bdamage.rvmat"
+                            }
+                        },
+                        {
+                            0,
+                            {
+                                "DZ\gear\camping\data\fence_metalsheets_bdamage.rvmat"
+                            }
+                        }
+                    };
+                };
+            };
+            class GlobalArmor
+            {
+                class Projectile
+                {
+                    class Health
+                    {
+                        damage=1;
+                    };
+                    class Blood
+                    {
+                        damage=0;
+                    };
+                    class Shock
+                    {
+                        damage=0;
+                    };
+                };
+                class Melee
+                {
+                    class Health
+                    {
+                        damage=0.64999998;
+                    };
+                    class Blood
+                    {
+                        damage=0;
+                    };
+                    class Shock
+                    {
+                        damage=0;
+                    };
+                };
+                class FragGrenade
+                {
+                    class Health
+                    {
+                        damage=40;
+                    };
+                    class Blood
+                    {
+                        damage=0;
+                    };
+                    class Shock
+                    {
+                        damage=0;
+                    };
+                };
+            };
         };
     };
     class MoreDoorSafe: MoreDoorBase
@@ -665,6 +1211,97 @@ class CfgVehicles
             itemsCargoSize[]={9,9};
             openable=0;
             allowOwnedCargoManipulation=1;
+        };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints=32000;
+                    healthLevels[]=
+                    {
+                        {
+                            1,
+                            {
+                                "DZ\gear\camping\data\fence_metalsheets.rvmat"
+                            }
+                        },
+                        {
+                            0.69999999,
+                            {
+                                "DZ\gear\camping\data\fence_metalsheets_worn.rvmat"
+                            }
+                        },
+                        {
+                            0.5,
+                            {
+                                "DZ\gear\camping\data\fence_metalsheets_damage.rvmat"
+                            }
+                        },
+                        {
+                            0.30000001,
+                            {
+                                "DZ\gear\camping\data\fence_metalsheets_bdamage.rvmat"
+                            }
+                        },
+                        {
+                            0,
+                            {
+                                "DZ\gear\camping\data\fence_metalsheets_bdamage.rvmat"
+                            }
+                        }
+                    };
+                };
+            };
+            class GlobalArmor
+            {
+                class Projectile
+                {
+                    class Health
+                    {
+                        damage=1;
+                    };
+                    class Blood
+                    {
+                        damage=0;
+                    };
+                    class Shock
+                    {
+                        damage=0;
+                    };
+                };
+                class Melee
+                {
+                    class Health
+                    {
+                        damage=0.64999998;
+                    };
+                    class Blood
+                    {
+                        damage=0;
+                    };
+                    class Shock
+                    {
+                        damage=0;
+                    };
+                };
+                class FragGrenade
+                {
+                    class Health
+                    {
+                        damage=40;
+                    };
+                    class Blood
+                    {
+                        damage=0;
+                    };
+                    class Shock
+                    {
+                        damage=0;
+                    };
+                };
+            };
         };
     };
 };

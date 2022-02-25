@@ -1,5 +1,46 @@
 class MoreDoorBase extends Fence
 {
+    void MoreDoorBase()
+    {
+        auto config = MissionBaseWorld.GetMoreDoorConfig();
+        if (config)
+        {
+            OnConfigUpdate(config);
+        }
+        else
+        {
+            MissionBaseWorld.Cast(GetGame().GetMission()).AddMoreDoorItem(this);
+        }
+    }
+
+    void ~MoreDoorBase()
+    {
+        if (GetGame() && GetGame().GetMission())
+        {
+            MissionBaseWorld.Cast(GetGame().GetMission()).RemoveMoreDoorItem(this);
+        }
+    }
+
+    override void EEHealthLevelChanged(int oldLevel, int newLevel, string zone)
+    {
+        super.EEHealthLevelChanged(oldLevel, newLevel, zone);
+
+        if (GetGame().IsMultiplayer() && !GetGame().IsServer())
+        {
+            return;
+        }
+
+        if (newLevel == GameConstants.STATE_RUINED)
+        {
+            HandleDropAttachment(GetCombinationLock());
+        }
+    }
+
+    void OnConfigUpdate(MoreDoorConfig config)
+    {
+        SetAllowDamage(config.Get_EnableVanillaRaiding());
+    }
+
     bool HasGate()
     {
         return true;
