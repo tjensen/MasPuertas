@@ -25,6 +25,8 @@ modded class MissionBaseWorld
         m_MoreDoorConfig = config;
 
         m_OnMoreDoorConfigUpdate.Invoke(config);
+
+        m_OnMoreDoorConfigUpdate.Clear();
     }
 
     void AddMoreDoorItem(MoreDoorBase item)

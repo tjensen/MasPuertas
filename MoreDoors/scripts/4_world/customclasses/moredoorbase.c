@@ -7,8 +7,10 @@ class MoreDoorBase extends Fence
         {
             OnConfigUpdate(config);
         }
-
-        MissionBaseWorld.Cast(GetGame().GetMission()).AddMoreDoorItem(this);
+        else
+        {
+            MissionBaseWorld.Cast(GetGame().GetMission()).AddMoreDoorItem(this);
+        }
     }
 
     void ~MoreDoorBase()
