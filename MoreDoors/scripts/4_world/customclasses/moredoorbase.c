@@ -36,8 +36,13 @@ class MoreDoorBase extends Fence
         {
             HandleDropAttachment(GetCombinationLock());
 
-            m_deleteTimer.Run(15, this, "DeleteSave");
+            OnDestroyed();
         }
+    }
+
+    void OnDestroyed()
+    {
+        m_deleteTimer.Run(15, this, "DeleteSave");
     }
 
     void OnConfigUpdate(MoreDoorConfig config)
@@ -306,6 +311,11 @@ class MoreDoorSafe extends MoreDoorBase
     const string SOUND_SAFE_OPEN_START      = "MoreDoor_doorMetalSmallOpen_SoundSet";
     const string SOUND_SAFE_CLOSE_START     = "MoreDoor_doorMetalSmallClose_SoundSet";
     const string SOUND_SAFE_CLOSE_END       = "combinationlock_close_SoundSet";
+
+    override void OnDestroyed()
+    {
+        MiscGameplayFunctions.DropAllItemsInInventoryInBounds(this, "0.2 0.8 0.3");
+    }
 
     override void SetActions()
     {
