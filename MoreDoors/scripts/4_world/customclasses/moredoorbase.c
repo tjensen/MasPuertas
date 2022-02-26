@@ -1,5 +1,7 @@
 class MoreDoorBase extends Fence
 {
+    private ref Timer m_deleteTimer = new Timer();
+
     void MoreDoorBase()
     {
         auto config = MissionBaseWorld.GetMoreDoorConfig();
@@ -33,6 +35,8 @@ class MoreDoorBase extends Fence
         if (newLevel == GameConstants.STATE_RUINED)
         {
             HandleDropAttachment(GetCombinationLock());
+
+            m_deleteTimer.Run(15, this, "DeleteSave");
         }
     }
 
