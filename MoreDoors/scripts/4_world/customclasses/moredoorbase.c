@@ -15,6 +15,7 @@ class MoreDoorBase extends Fence
         }
 
         SetGateState(GATE_STATE_FULL);
+        SetBaseState(true);
     }
 
     void ~MoreDoorBase()
@@ -105,13 +106,13 @@ class MoreDoorBase extends Fence
     override void OpenFence()
     {
         //server or single player
-        if ( GetGame().IsServer() )
+        if (GetGame().IsServer())
         {
             SetAnimationPhase("Wall_Gate_Rotate", 2);
-            SetOpenedState( true );
+            SetOpenedState(true);
 
             //regenerate navmesh
-            GetGame().GetCallQueue( CALL_CATEGORY_GAMEPLAY ).CallLater(
+            GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(
                 UpdateNavmesh, GATE_ROTATION_TIME_APPROX, false);
 
             //synchronize
@@ -119,10 +120,34 @@ class MoreDoorBase extends Fence
         }
 
         //client or single player
-        if ( !GetGame().IsMultiplayer() || GetGame().IsClient() )
+        if (!GetGame().IsDedicatedServer())
         {
             //play sound
             SoundGateOpenStart();
+        }
+    }
+
+    override void CloseFence()
+    {
+        //server or single player
+        if (GetGame().IsServer())
+        {
+            SetAnimationPhase("Wall_Gate_Rotate", 0);
+            SetOpenedState(false);
+
+            //regenerate navmesh
+            GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(
+                UpdateNavmesh, GATE_ROTATION_TIME_APPROX, false);
+
+            //synchronize
+            SynchronizeBaseState();
+        }
+
+        //client or single player
+        if (!GetGame().IsDedicatedServer())
+        {
+            //play sound
+            SoundGateCloseStart();
         }
     }
 
@@ -326,9 +351,9 @@ class MoreDoorSafe extends MoreDoorBase
         AddAction(ActionTakeItemToHands);
     }
 
-    override bool CanPutInCargo( EntityAI parent )
+    override bool CanPutInCargo(EntityAI parent)
     {
-        if ( GetNumberOfItems() == 0 && !IsOpened() && !IsLocked() )
+        if (GetNumberOfItems() == 0 && !IsOpened() && !GetCombinationLock())
         {
             return true;
         }
@@ -349,7 +374,7 @@ class MoreDoorSafe extends MoreDoorBase
 
     override bool CanPutIntoHands(EntityAI parent)
     {
-        if ( GetNumberOfItems() == 0 && !IsOpened() && !IsLocked() )
+        if (GetNumberOfItems() == 0 && !IsOpened() && !GetCombinationLock())
         {
             return true;
         }
@@ -382,9 +407,6 @@ class MoreDoorSafe extends MoreDoorBase
 
     override void AfterStoreLoad()
     {
-        SetGateState( true );
-        SetBaseState( true );
-
         if (IsOpened())
         {
             OpenFence();
