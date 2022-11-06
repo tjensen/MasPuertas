@@ -35,7 +35,7 @@ modded class Hologram
             return;
         }
 
-        super.EvaluateCollision();
+        super.EvaluateCollision(action_item);
     }
 };
 
