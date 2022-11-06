@@ -353,7 +353,7 @@ class MoreDoorSafe extends MoreDoorBase
 
     override bool CanPutInCargo(EntityAI parent)
     {
-        if (GetNumberOfItems() == 0 && !IsOpened() && !GetCombinationLock())
+        if (!IsOpened() && GetNumberOfItems() == 0 && GetInventory().AttachmentCount() == 0)
         {
             return true;
         }
@@ -367,18 +367,25 @@ class MoreDoorSafe extends MoreDoorBase
 
     override bool CanReceiveAttachment(EntityAI attachment, int slotId)
     {
-        // The inventory is locked when the safe is closed, so only allow locks to be attached when
-        // the safe is open. The door will be closed automatically after a lock is attached.
-        return IsOpened();
-    }
-
-    override bool CanPutIntoHands(EntityAI parent)
-    {
-        if (GetNumberOfItems() == 0 && !IsOpened() && !GetCombinationLock())
+        if (attachment.IsInherited(ATTACHMENT_COMBINATION_LOCK))
         {
             return true;
         }
         return false;
+    }
+
+    override bool CanPutIntoHands(EntityAI parent)
+    {
+        if (!IsOpened() && GetNumberOfItems() == 0 && GetInventory().AttachmentCount() == 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    override bool CanDisplayCargo()
+    {
+        return IsOpened();
     }
 
     override bool IsPlayerInside( PlayerBase player, string selection )
@@ -391,20 +398,6 @@ class MoreDoorSafe extends MoreDoorBase
         return true;
     }
 
-    override void OpenFence()
-    {
-        super.OpenFence();
-
-        GetInventory().UnlockInventory(HIDE_INV_FROM_SCRIPT);
-    }
-
-    override void CloseFence()
-    {
-        super.CloseFence();
-
-        GetInventory().LockInventory(HIDE_INV_FROM_SCRIPT);
-    }
-
     override void AfterStoreLoad()
     {
         if (IsOpened())
@@ -413,7 +406,7 @@ class MoreDoorSafe extends MoreDoorBase
         }
         else
         {
-            GetInventory().LockInventory(HIDE_INV_FROM_SCRIPT);
+            CloseFence();
         }
 
         UpdateVisuals();
@@ -423,7 +416,7 @@ class MoreDoorSafe extends MoreDoorBase
     {
         super.EEItemAttached(item, slot_name);
 
-        if (slot_name == "Att_CombinationLock")
+        if (slot_name == ATTACHMENT_SLOT_COMBINATION_LOCK)
         {
             CloseFence();
         }
@@ -444,7 +437,7 @@ class MoreDoorSafe extends MoreDoorBase
         }
         else
         {
-            GetInventory().LockInventory(HIDE_INV_FROM_SCRIPT);
+            CloseFence();
         }
     }
 
