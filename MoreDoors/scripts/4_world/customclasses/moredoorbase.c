@@ -26,6 +26,11 @@ class MoreDoorBase extends Fence
         }
     }
 
+    override bool HasFullyConstructedGate()
+    {
+        return true;
+    }
+
     override void EEHealthLevelChanged(int oldLevel, int newLevel, string zone)
     {
         super.EEHealthLevelChanged(oldLevel, newLevel, zone);
@@ -96,16 +101,6 @@ class MoreDoorBase extends Fence
     bool IsMetalDoor()
     {
         return false;
-    }
-
-    override bool CanReceiveAttachment(EntityAI attachment, int slotId)
-    {
-        if (IsOpened() || InventorySlots.GetSlotName(slotId) != ATTACHMENT_SLOT_COMBINATION_LOCK)
-        {
-            return false;
-        }
-
-        return true;
     }
 
     bool CanBeInteractedWithBy(EntityAI entity)
