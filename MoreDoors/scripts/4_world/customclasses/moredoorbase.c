@@ -13,6 +13,8 @@ class MoreDoorBase extends Fence
         {
             MissionBaseWorld.Cast(GetGame().GetMission()).AddMoreDoorItem(this);
         }
+
+        SetGateState(GATE_STATE_FULL);
     }
 
     void ~MoreDoorBase()
