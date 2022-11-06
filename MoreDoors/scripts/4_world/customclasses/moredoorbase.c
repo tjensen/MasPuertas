@@ -43,6 +43,16 @@ class MoreDoorBase extends Fence
         }
     }
 
+    override void EEItemAttached(EntityAI item, string slot_name)
+    {
+        super.EEItemAttached(item, slot_name);
+
+        if (slot_name == ATTACHMENT_SLOT_COMBINATION_LOCK)
+        {
+            CloseFence();
+        }
+    }
+
     void OnDestroyed()
     {
         m_deleteTimer.Run(15, this, "DeleteSave");
@@ -86,6 +96,16 @@ class MoreDoorBase extends Fence
     bool IsMetalDoor()
     {
         return false;
+    }
+
+    override bool CanReceiveAttachment(EntityAI attachment, int slotId)
+    {
+        if (IsOpened() || InventorySlots.GetSlotName(slotId) != ATTACHMENT_SLOT_COMBINATION_LOCK)
+        {
+            return false;
+        }
+
+        return true;
     }
 
     bool CanBeInteractedWithBy(EntityAI entity)
@@ -181,11 +201,6 @@ class MoreDoorBase extends Fence
         }
 
         return super.CanDisplayAttachmentCategory(category_name);
-    }
-
-    override bool CanReceiveAttachment(EntityAI attachment, int slotId)
-    {
-        return !IsOpened();
     }
 
     override void SetActions()
@@ -365,15 +380,6 @@ class MoreDoorSafe extends MoreDoorBase
         return true;
     }
 
-    override bool CanReceiveAttachment(EntityAI attachment, int slotId)
-    {
-        if (attachment.IsInherited(ATTACHMENT_COMBINATION_LOCK))
-        {
-            return true;
-        }
-        return false;
-    }
-
     override bool CanPutIntoHands(EntityAI parent)
     {
         if (!IsOpened() && GetNumberOfItems() == 0 && GetInventory().AttachmentCount() == 0)
@@ -388,12 +394,12 @@ class MoreDoorSafe extends MoreDoorBase
         return IsOpened();
     }
 
-    override bool IsPlayerInside( PlayerBase player, string selection )
+    override bool IsPlayerInside(PlayerBase player, string selection)
     {
         return true;
     }
 
-    override bool CanRemoveFromCargo( EntityAI parent )
+    override bool CanRemoveFromCargo(EntityAI parent)
     {
         return true;
     }
@@ -410,16 +416,6 @@ class MoreDoorSafe extends MoreDoorBase
         }
 
         UpdateVisuals();
-    }
-
-    override void EEItemAttached(EntityAI item, string slot_name)
-    {
-        super.EEItemAttached(item, slot_name);
-
-        if (slot_name == ATTACHMENT_SLOT_COMBINATION_LOCK)
-        {
-            CloseFence();
-        }
     }
 
     override bool AllowDestruction()
