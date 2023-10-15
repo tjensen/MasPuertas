@@ -1,7 +1,6 @@
 class MoreDoorKitBase extends ItemBase
 {
-    ref protected EffectSound                       m_DeployLoopSound;
-    //protected bool m_hasThings;
+    ref protected EffectSound m_DeployLoopSound;
 
     string slotNails = "Material_Nails";
     string slotPlanks = "Material_WoodenPlanks";
@@ -13,11 +12,6 @@ class MoreDoorKitBase extends ItemBase
     int slot_id2;
     int slot_id3;
     int slot_id4;
-
-    ItemBase slotCast;
-    ItemBase slotCast2;
-    ItemBase slotCast3;
-    ItemBase slotCast4;
 
     int plankCost;
     int nailCost;
@@ -98,6 +92,32 @@ class MoreDoorKitBase extends ItemBase
         GetInventory().CreateAttachment( "MetalWire" );
     }
 
+    private bool DropExcessQuantity(Man player, ItemBase item, int cost)
+    {
+        if (item && item.GetQuantity() > cost)
+        {
+            item.AddQuantity(-cost);
+
+            return GetInventory().DropEntity(InventoryMode.SERVER, player, item);
+        }
+
+        return false;
+    }
+
+    void DropExcessComponents(Man player)
+    {
+        DropExcessQuantity(
+            player, ItemBase.Cast(GetInventory().FindAttachmentByName(slotNails)), nailCost);
+        DropExcessQuantity(
+            player, ItemBase.Cast(GetInventory().FindAttachmentByName(slotPlanks)), plankCost);
+        DropExcessQuantity(
+            player, ItemBase.Cast(GetInventory().FindAttachmentByName(slotMetal)), metalCost);
+        DropExcessQuantity(
+           player, ItemBase.Cast(GetInventory().FindAttachmentByName(slotLogs)), logCost);
+        DropExcessQuantity(
+           player, ItemBase.Cast(GetInventory().FindAttachmentByName(slotWire)), wireCost);
+    }
+
     //================================================================
     // ADVANCED PLACEMENT
     //================================================================
@@ -108,6 +128,8 @@ class MoreDoorKitBase extends ItemBase
 
         if (GetGame().IsServer())
         {
+            DropExcessComponents(player);
+
             GetGame().ObjectDelete(this);
         }
 
@@ -161,16 +183,6 @@ class MoreDoorKitBase extends ItemBase
         return true;
     }
 
-    // override bool IsHeavyBehaviour()
-    // {
-    //  return true;
-    // }
-
-    // override bool IsTwoHandedBehaviour()
-    // {
-    //  return true;
-    // }
-
     override void SetActions()
     {
         super.SetActions();
@@ -199,17 +211,22 @@ class MoreDoorVaultKit extends MoreDoorKitBase
 
 class MoreDoorSmallKit extends MoreDoorKitBase
 {
-    override bool HasRequiredComponents()
+    void MoreDoorSmallKit()
     {
         plankCost = 10;
         nailCost = 25;
+        wireCost = 1;
 
         slot_id = InventorySlots.GetSlotIdFromString(slotNails);
         slot_id2 = InventorySlots.GetSlotIdFromString(slotPlanks);
         slot_id3 = InventorySlots.GetSlotIdFromString(slotWire);
-        slotCast = ItemBase.Cast(GetInventory().FindAttachment(slot_id));
-        slotCast2 = ItemBase.Cast(GetInventory().FindAttachment(slot_id2));
-        slotCast3 = ItemBase.Cast(GetInventory().FindAttachment(slot_id3));
+    }
+
+    override bool HasRequiredComponents()
+    {
+        auto slotCast = ItemBase.Cast(GetInventory().FindAttachment(slot_id));
+        auto slotCast2 = ItemBase.Cast(GetInventory().FindAttachment(slot_id2));
+        auto slotCast3 = ItemBase.Cast(GetInventory().FindAttachment(slot_id3));
 
         if (slotCast != NULL && slotCast2 != NULL && slotCast3 != NULL)
         {
@@ -240,20 +257,25 @@ class MoreDoorSmallKit extends MoreDoorKitBase
 
 class MoreDoorSmallMetalKit extends MoreDoorKitBase
 {
-    override bool HasRequiredComponents()
+    void MoreDoorSmallMetalKit()
     {
         plankCost = 20;
         nailCost = 75;
         metalCost = 5;
+        wireCost = 1;
 
         slot_id = InventorySlots.GetSlotIdFromString(slotNails);
         slot_id2 = InventorySlots.GetSlotIdFromString(slotPlanks);
         slot_id3 = InventorySlots.GetSlotIdFromString(slotWire);
         slot_id4 = InventorySlots.GetSlotIdFromString(slotMetal);
-        slotCast = ItemBase.Cast(GetInventory().FindAttachment(slot_id));
-        slotCast2 = ItemBase.Cast(GetInventory().FindAttachment(slot_id2));
-        slotCast3 = ItemBase.Cast(GetInventory().FindAttachment(slot_id3));
-        slotCast4 = ItemBase.Cast(GetInventory().FindAttachment(slot_id4));
+    }
+
+    override bool HasRequiredComponents()
+    {
+        auto slotCast = ItemBase.Cast(GetInventory().FindAttachment(slot_id));
+        auto slotCast2 = ItemBase.Cast(GetInventory().FindAttachment(slot_id2));
+        auto slotCast3 = ItemBase.Cast(GetInventory().FindAttachment(slot_id3));
+        auto slotCast4 = ItemBase.Cast(GetInventory().FindAttachment(slot_id4));
 
         if (slotCast != NULL && slotCast2 != NULL && slotCast3 != NULL && slotCast4 != NULL)
         {
@@ -285,15 +307,19 @@ class MoreDoorSmallMetalKit extends MoreDoorKitBase
 
 class MoreDoorSmallShantyKit extends MoreDoorKitBase
 {
-    override bool HasRequiredComponents()
+    void MoreDoorSmallShantyKit()
     {
         plankCost = 5;
         nailCost = 25;
 
         slot_id = InventorySlots.GetSlotIdFromString(slotNails);
         slot_id2 = InventorySlots.GetSlotIdFromString(slotPlanks);
-        slotCast = ItemBase.Cast(GetInventory().FindAttachment(slot_id));
-        slotCast2 = ItemBase.Cast(GetInventory().FindAttachment(slot_id2));
+    }
+
+    override bool HasRequiredComponents()
+    {
+        auto slotCast = ItemBase.Cast(GetInventory().FindAttachment(slot_id));
+        auto slotCast2 = ItemBase.Cast(GetInventory().FindAttachment(slot_id2));
 
         if (slotCast != NULL && slotCast2 != NULL)
         {
@@ -330,22 +356,26 @@ class MoreDoorSmallShantyKit extends MoreDoorKitBase
 
 class MoreDoorBarricadeKit extends MoreDoorKitBase
 {
-    override bool HasRequiredComponents()
+    void MoreDoorBarricadeKit()
     {
         plankCost = 3;
         nailCost = 10;
 
         slot_id = InventorySlots.GetSlotIdFromString(slotNails);
         slot_id2 = InventorySlots.GetSlotIdFromString(slotPlanks);
-        slotCast = ItemBase.Cast(GetInventory().FindAttachment(slot_id));
-        slotCast2 = ItemBase.Cast(GetInventory().FindAttachment(slot_id2));
+    }
 
-        if(slotCast != NULL && slotCast2 != NULL)
+    override bool HasRequiredComponents()
+    {
+        auto slotCast = ItemBase.Cast(GetInventory().FindAttachment(slot_id));
+        auto slotCast2 = ItemBase.Cast(GetInventory().FindAttachment(slot_id2));
+
+        if (slotCast != NULL && slotCast2 != NULL)
         {
             j_Count = slotCast.GetQuantity();
             j_Count2 = slotCast2.GetQuantity();
 
-            if(j_Count >= nailCost && j_Count2 >= plankCost)
+            if (j_Count >= nailCost && j_Count2 >= plankCost)
             {
                 return true;
             }
