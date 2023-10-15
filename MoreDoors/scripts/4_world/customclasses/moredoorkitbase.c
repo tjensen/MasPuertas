@@ -5,13 +5,11 @@ class MoreDoorKitBase extends ItemBase
     const string SLOT_NAILS = "Material_Nails";
     const string SLOT_PLANKS = "Material_WoodenPlanks";
     const string SLOT_METAL = "Material_MetalSheets";
-    const string SLOT_LOGS = "Material_WoodenLogs";
     const string SLOT_WIRE = "Material_MetalWire";
 
     int plankCost;
     int nailCost;
     int metalCost;
-    int logCost;
     int wireCost;
 
     void MoreDoorKitBase()
@@ -40,12 +38,6 @@ class MoreDoorKitBase extends ItemBase
 
         if (!HasRequiredComponent(
                 ItemBase.Cast(GetInventory().FindAttachmentByName(SLOT_METAL)), metalCost))
-        {
-            return false;
-        }
-
-        if (!HasRequiredComponent(
-                ItemBase.Cast(GetInventory().FindAttachmentByName(SLOT_LOGS)), logCost))
         {
             return false;
         }
@@ -137,8 +129,6 @@ class MoreDoorKitBase extends ItemBase
             player, ItemBase.Cast(GetInventory().FindAttachmentByName(SLOT_PLANKS)), plankCost);
         DropExcessQuantity(
             player, ItemBase.Cast(GetInventory().FindAttachmentByName(SLOT_METAL)), metalCost);
-        DropExcessQuantity(
-           player, ItemBase.Cast(GetInventory().FindAttachmentByName(SLOT_LOGS)), logCost);
         DropExcessQuantity(
            player, ItemBase.Cast(GetInventory().FindAttachmentByName(SLOT_WIRE)), wireCost);
     }
