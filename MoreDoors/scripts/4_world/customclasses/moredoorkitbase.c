@@ -17,6 +17,11 @@ class MoreDoorKitBase extends ItemBase
         RegisterNetSyncVariableBool("m_IsSoundSynchRemote");
     }
 
+    void ~MoreDoorKitBase()
+    {
+        SEffectManager.DestroyEffect(m_DeployLoopSound);
+    }
+
     private bool HasRequiredComponent(ItemBase item, int cost)
     {
         return cost == 0 || (item && item.GetQuantity() >= cost);
@@ -178,18 +183,22 @@ class MoreDoorKitBase extends ItemBase
 
     void PlayDeployLoopSound()
     {
-        if ( GetGame().IsMultiplayer() && GetGame().IsClient() || !GetGame().IsMultiplayer() )
+        if (!GetGame().IsDedicatedServer())
         {
-            m_DeployLoopSound = SEffectManager.PlaySound( GetLoopDeploySoundset(), GetPosition() );
+            if (!m_DeployLoopSound || !m_DeployLoopSound.IsSoundPlaying())
+            {
+                m_DeployLoopSound = SEffectManager.PlaySound(
+                    GetLoopDeploySoundset(), GetPosition());
+            }
         }
     }
 
     void StopDeployLoopSound()
     {
-        if ( GetGame().IsMultiplayer() && GetGame().IsClient() || !GetGame().IsMultiplayer() )
+        if (!GetGame().IsDedicatedServer())
         {
+            m_DeployLoopSound.SetSoundFadeOut(0.5);
             m_DeployLoopSound.SoundStop();
-            delete m_DeployLoopSound;
         }
     }
 
