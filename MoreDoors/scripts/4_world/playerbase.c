@@ -16,6 +16,23 @@ modded class PlayerBase
 
         return super.CanClimb(climbType, climbRes);
     }
+
+    override void PlacingStartLocal(ItemBase item)
+    {
+        super.PlacingStartLocal(item);
+
+        if (item && item.IsInherited(MoreDoorKitBase))
+        {
+            GetItemAccessor().HideItemInHands(true);
+        }
+    }
+
+    override void PlacingCancelLocal()
+    {
+        super.PlacingCancelLocal();
+
+        GetItemAccessor().HideItemInHands(false);
+    }
 };
 
 modded class ModItemRegisterCallbacks
@@ -23,7 +40,10 @@ modded class ModItemRegisterCallbacks
     override void RegisterHeavy(DayZPlayerType pType, DayzPlayerItemBehaviorCfg pBehavior)
     {
         super.RegisterHeavy(pType, pBehavior);
-        pType.AddItemInHandsProfileIK("MoreDoorKitBase", "dz/anims/workspaces/player/player_main/player_main_heavy.asi", pBehavior, "dz/anims/anm/player/ik/heavy/wooden_crate.anm");
+
+        pType.AddItemInHandsProfileIK(
+            "MoreDoorKitBase", "dz/anims/workspaces/player/player_main/player_main_heavy.asi",
+            pBehavior, "dz/anims/anm/player/ik/heavy/wooden_crate.anm");
     }
 };
 
