@@ -422,14 +422,7 @@ class CfgVehicles
         useEntityHierarchy="true";
         placement="ForceSlopeOnTerrain";
         absorbency=0;
-        attachments[]=
-        {
-            "Material_Nails",
-            "Material_WoodenPlanks",
-            "Material_MetalSheets",
-            "Material_WoodenLogs",
-            "Material_MetalWire"
-        };
+        attachments[]={};
     };
     class MoreDoorVaultKit: MoreDoorKitBase
     {
@@ -444,6 +437,12 @@ class CfgVehicles
         displayName="Small Door Kit";
         descriptionShort="Requires 10 planks, 25 nails, and Metal Wire to build the door. Once the required ingredients are in the slots place the object with the action to build it.";
         model="\DZ\gear\camping\wooden_case.p3d";
+        attachments[]+=
+        {
+            "Material_Nails",
+            "Material_WoodenPlanks",
+            "Material_MetalWire"
+        };
     };
     class MoreDoorSmallShantyKit: MoreDoorKitBase
     {
@@ -451,6 +450,11 @@ class CfgVehicles
         displayName="Small Shanty Door Kit";
         descriptionShort="Requires 5 planks and 25 nails to build the door. Once the required ingredients are in the slots place the object with the action to build it.";
         model="\DZ\gear\camping\wooden_case.p3d";
+        attachments[]=
+        {
+            "Material_Nails",
+            "Material_WoodenPlanks"
+        };
     };
     class MoreDoorSmallMetalKit: MoreDoorKitBase
     {
@@ -458,6 +462,13 @@ class CfgVehicles
         displayName="Small Metal Door Kit";
         descriptionShort="Requires 20 planks, 75 nails, 5 Sheet metal, and Metal Wire to build the door. Once the required ingredients are in the slots place the object with the action to build it.";
         model="\DZ\gear\camping\wooden_case.p3d";
+        attachments[]=
+        {
+            "Material_Nails",
+            "Material_WoodenPlanks",
+            "Material_MetalSheets",
+            "Material_MetalWire"
+        };
     };
     class MoreDoorBarricadeKit: MoreDoorKitBase
     {
@@ -465,6 +476,11 @@ class CfgVehicles
         displayName="Barricade Kit";
         descriptionShort="Use this to block your windows! Requires 3 planks, 10 nails to place the barricade.";
         model="\DZ\gear\camping\wooden_case.p3d";
+        attachments[]=
+        {
+            "Material_Nails",
+            "Material_WoodenPlanks"
+        };
     };
     class MoreDoorVault: MoreDoorBase
     {
