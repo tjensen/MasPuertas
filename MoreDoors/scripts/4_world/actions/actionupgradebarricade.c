@@ -35,7 +35,7 @@ class ActionUpgradeBarricade: ActionContinuousBase
 		MoreDoorBarricade base_building = MoreDoorBarricade.Cast( target_object );
 		if ( base_building )
 		{
-			if (base_building.hasTheGoodStuff())
+			if (base_building.HasRequiredComponents())
 			{
 				return true;	
 			}

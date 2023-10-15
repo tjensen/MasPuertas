@@ -35,7 +35,7 @@ class MoreDoorKitBase extends ItemBase
         RegisterNetSyncVariableBool("m_IsSoundSynchRemote");
     }
 
-    bool hasTheGoodStuff()
+    bool HasRequiredComponents()
     {
         return false;
     }
@@ -116,7 +116,7 @@ class MoreDoorKitBase extends ItemBase
 
     override bool CanBePlaced(Man player, vector position)
     {
-        if (!hasTheGoodStuff())
+        if (!HasRequiredComponents())
         {
             return false;
         }
@@ -181,14 +181,14 @@ class MoreDoorKitBase extends ItemBase
 
 class MoreDoorVaultKit extends MoreDoorKitBase
 {
-    override bool hasTheGoodStuff()
+    override bool HasRequiredComponents()
     {
         return true;
     }
 
     override string j_Door()
     {
-        if (hasTheGoodStuff())
+        if (HasRequiredComponents())
         {
             return "MoreDoorVault";
         }
@@ -199,7 +199,7 @@ class MoreDoorVaultKit extends MoreDoorKitBase
 
 class MoreDoorSmallKit extends MoreDoorKitBase
 {
-    override bool hasTheGoodStuff()
+    override bool HasRequiredComponents()
     {
         plankCost = 10;
         nailCost = 25;
@@ -229,7 +229,7 @@ class MoreDoorSmallKit extends MoreDoorKitBase
 
     override string j_Door()
     {
-        if (hasTheGoodStuff())
+        if (HasRequiredComponents())
         {
             return "MoreDoorSmall";
         }
@@ -240,7 +240,7 @@ class MoreDoorSmallKit extends MoreDoorKitBase
 
 class MoreDoorSmallMetalKit extends MoreDoorKitBase
 {
-    override bool hasTheGoodStuff()
+    override bool HasRequiredComponents()
     {
         plankCost = 20;
         nailCost = 75;
@@ -274,7 +274,7 @@ class MoreDoorSmallMetalKit extends MoreDoorKitBase
 
     override string j_Door()
     {
-        if (hasTheGoodStuff())
+        if (HasRequiredComponents())
         {
             return "MoreDoorSmallMetal";
         }
@@ -285,7 +285,7 @@ class MoreDoorSmallMetalKit extends MoreDoorKitBase
 
 class MoreDoorSmallShantyKit extends MoreDoorKitBase
 {
-    override bool hasTheGoodStuff()
+    override bool HasRequiredComponents()
     {
         plankCost = 5;
         nailCost = 25;
@@ -313,7 +313,7 @@ class MoreDoorSmallShantyKit extends MoreDoorKitBase
 
     override string j_Door()
     {
-        if (hasTheGoodStuff())
+        if (HasRequiredComponents())
         {
             return "MoreDoorSmallShanty";
         }
@@ -330,7 +330,7 @@ class MoreDoorSmallShantyKit extends MoreDoorKitBase
 
 class MoreDoorBarricadeKit extends MoreDoorKitBase
 {
-    override bool hasTheGoodStuff()
+    override bool HasRequiredComponents()
     {
         plankCost = 3;
         nailCost = 10;
@@ -357,7 +357,7 @@ class MoreDoorBarricadeKit extends MoreDoorKitBase
 
     override string j_Door()
     {
-        if (hasTheGoodStuff())
+        if (HasRequiredComponents())
         {
             return "MoreDoorBarricade";
         }

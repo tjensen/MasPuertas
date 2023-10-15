@@ -299,7 +299,7 @@ class MoreDoorBarricade extends MoreDoorBase
         return true;
     }
 
-    bool hasTheGoodStuff()
+    bool HasRequiredComponents()
     {
         int metalCost = 3;
 
