@@ -24,7 +24,22 @@ class MoreDoorKitBase extends ItemBase
 
     private bool HasRequiredComponent(ItemBase item, int cost)
     {
-        return cost == 0 || (item && item.GetQuantity() >= cost);
+        if (cost == 0)
+        {
+            return true;
+        }
+
+        if (!item)
+        {
+            return false;
+        }
+
+        if (!item.HasQuantity())
+        {
+            return cost == 1;
+        }
+
+        return item.GetQuantity() >= cost;
     }
 
     bool HasRequiredComponents()
