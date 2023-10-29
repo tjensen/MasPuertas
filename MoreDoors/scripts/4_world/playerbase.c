@@ -23,7 +23,7 @@ modded class PlayerBase
 
         if (item && item.IsInherited(MoreDoorKitBase))
         {
-            GetItemAccessor().HideItemInHands(true);
+            item.SetInvisible(true);
         }
     }
 
@@ -31,7 +31,12 @@ modded class PlayerBase
     {
         super.PlacingCancelLocal();
 
-        GetItemAccessor().HideItemInHands(false);
+        auto item = GetItemInHands();
+
+        if (item && item.IsInherited(MoreDoorKitBase))
+        {
+            item.SetInvisible(false);
+        }
     }
 };
 
