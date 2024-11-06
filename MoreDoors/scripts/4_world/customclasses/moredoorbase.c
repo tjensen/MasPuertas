@@ -375,6 +375,15 @@ class MoreDoorSafe extends MoreDoorBase
         return true;
     }
 
+    override bool IsTakeable()
+    {
+        if (!IsOpened() && GetNumberOfItems() == 0 && GetInventory().AttachmentCount() == 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
     override bool CanPutIntoHands(EntityAI parent)
     {
         if (!IsOpened() && GetNumberOfItems() == 0 && GetInventory().AttachmentCount() == 0)
