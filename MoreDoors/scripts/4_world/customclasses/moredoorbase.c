@@ -110,7 +110,7 @@ class MoreDoorBase extends Fence
 
     override bool CanCloseFence()
     {
-        if ( IsOpened() )
+        if (IsOpened())
         {
             return true;
         }
@@ -183,7 +183,7 @@ class MoreDoorBase extends Fence
         return false;
     }
 
-    override bool CanDisplayAttachmentSlot( string slot_name )
+    override bool CanDisplayAttachmentSlot(string slot_name)
     {
         return true;
     }
@@ -235,17 +235,17 @@ class MoreDoorVault extends MoreDoorBase
 
     override protected void SoundGateOpenStart()
     {
-        PlaySoundSet( m_SoundGate_Start, SOUND_SAFE_OPEN_START, 0.1, 0.1 );
+        PlaySoundSet(m_SoundGate_Start, SOUND_SAFE_OPEN_START, 0.1, 0.1);
     }
 
     override protected void SoundGateCloseStart()
     {
-        PlaySoundSet( m_SoundGate_Start, SOUND_SAFE_CLOSE_START, 0.1, 0.1 );
+        PlaySoundSet(m_SoundGate_Start, SOUND_SAFE_CLOSE_START, 0.1, 0.1);
     }
 
     override protected void SoundGateCloseEnd()
     {
-        PlaySoundSet( m_SoundGate_End, SOUND_SAFE_CLOSE_END, 0.1, 0.1 );
+        PlaySoundSet(m_SoundGate_End, SOUND_SAFE_CLOSE_END, 0.1, 0.1);
     }
 
     override bool AllowDismantle()
@@ -304,12 +304,12 @@ class MoreDoorBarricade extends MoreDoorBase
         int metalCost = 3;
 
         int slot_id = InventorySlots.GetSlotIdFromString("Material_MetalSheets");
-        ItemBase slotCast = ItemBase.Cast( GetInventory().FindAttachment(slot_id) );
+        ItemBase slotCast = ItemBase.Cast(GetInventory().FindAttachment(slot_id));
 
-        if( slotCast != NULL )
+        if (slotCast != NULL)
         {
             int j_Count = slotCast.GetQuantity();
-            if( j_Count >= metalCost )
+            if (j_Count >= metalCost)
             {
                 return true;
             }
@@ -318,11 +318,11 @@ class MoreDoorBarricade extends MoreDoorBase
         return false;
     }
 
-    override void UpdateAttachmentPhysics( string slot_name, bool is_locked )
+    override void UpdateAttachmentPhysics(string slot_name, bool is_locked)
     {
     }
 
-    override void UpdateAttachmentVisuals( string slot_name, bool is_locked )
+    override void UpdateAttachmentVisuals(string slot_name, bool is_locked)
     {
     }
 };
@@ -334,7 +334,7 @@ class MoreDoorMetalBarricade extends MoreDoorBase
         return "MoreDoorBarricadeKit";
     }
 
-    override void EEItemDetached ( EntityAI item, string slot_name )
+    override void EEItemDetached (EntityAI item, string slot_name)
     {
     }
 
@@ -448,17 +448,17 @@ class MoreDoorSafe extends MoreDoorBase
 
     override protected void SoundGateOpenStart()
     {
-        PlaySoundSet( m_SoundGate_Start, SOUND_SAFE_OPEN_START, 0.1, 0.1 );
+        PlaySoundSet(m_SoundGate_Start, SOUND_SAFE_OPEN_START, 0.1, 0.1);
     }
 
     override protected void SoundGateCloseStart()
     {
-        PlaySoundSet( m_SoundGate_Start, SOUND_SAFE_CLOSE_START, 0.1, 0.1 );
+        PlaySoundSet(m_SoundGate_Start, SOUND_SAFE_CLOSE_START, 0.1, 0.1);
     }
 
     override protected void SoundGateCloseEnd()
     {
-        PlaySoundSet( m_SoundGate_End, SOUND_SAFE_CLOSE_END, 0.1, 0.1 );
+        PlaySoundSet(m_SoundGate_End, SOUND_SAFE_CLOSE_END, 0.1, 0.1);
     }
 };
 
