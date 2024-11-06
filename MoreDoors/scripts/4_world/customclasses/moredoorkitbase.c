@@ -80,25 +80,25 @@ class MoreDoorKitBase extends ItemBase
     {
         super.OnVariablesSynchronized();
 
-        if ( IsDeploySound() )
+        if (IsDeploySound())
         {
             PlayDeploySound();
         }
 
-        if ( CanPlayDeployLoopSound() )
+        if (CanPlayDeployLoopSound())
         {
             PlayDeployLoopSound();
         }
 
-        if ( m_DeployLoopSound && !CanPlayDeployLoopSound() )
+        if (m_DeployLoopSound && !CanPlayDeployLoopSound())
         {
             StopDeployLoopSound();
         }
     }
 
-    override bool CanPutInCargo( EntityAI parent )
+    override bool CanPutInCargo(EntityAI parent)
     {
-        if ( IsEmpty() )
+        if (IsEmpty())
         {
             return true;
         }
@@ -122,11 +122,11 @@ class MoreDoorKitBase extends ItemBase
 
     void ReturnGoodsFromDismantle()
     {
-        ItemBase j_goods = ItemBase.Cast(GetInventory().CreateAttachment("WoodenPlank" ));
+        ItemBase j_goods = ItemBase.Cast(GetInventory().CreateAttachment("WoodenPlank"));
         j_goods.SetQuantity(10);
-        ItemBase j_goods2 = ItemBase.Cast(GetInventory().CreateAttachment("Nail" ));
+        ItemBase j_goods2 = ItemBase.Cast(GetInventory().CreateAttachment("Nail"));
         j_goods2.SetQuantity(10);
-        GetInventory().CreateAttachment( "MetalWire" );
+        GetInventory().CreateAttachment("MetalWire");
     }
 
     private bool DropExcessQuantity(Man player, ItemBase item, int cost)

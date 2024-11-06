@@ -101,7 +101,7 @@ class MoreDoorConfig
     int Get_MoreDoorDestroyTime(string item)
     {
         int destroyTime = -1;
-        switch( item )
+        switch (item)
         {
             case "MoreDoorSmallShanty":
                 destroyTime = MoreDoorShantyDestroyTime;

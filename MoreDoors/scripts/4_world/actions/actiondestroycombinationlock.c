@@ -28,13 +28,13 @@ class ActionDestroyCombinationLockMoreDoor: ActionContinuousBase
         return "#destroy_combination_lock";
     }
 
-    override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+    override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
     {
         Object target_object = target.GetObject();
-        string selection = target_object.GetActionComponentName( target.GetComponentIndex() );
-        MoreDoorBase fence = MoreDoorBase.Cast( target_object );
+        string selection = target_object.GetActionComponentName(target.GetComponentIndex());
+        MoreDoorBase fence = MoreDoorBase.Cast(target_object);
 
-        if ( fence && fence.IsLocked() && MissionBaseWorld.GetMoreDoorConfig().Get_CanCutComboLock() )
+        if (fence && fence.IsLocked() && MissionBaseWorld.GetMoreDoorConfig().Get_CanCutComboLock())
         {
             return true;
         }
@@ -42,23 +42,23 @@ class ActionDestroyCombinationLockMoreDoor: ActionContinuousBase
         return false;
     }
 
-    override void OnFinishProgressServer( ActionData action_data )
+    override void OnFinishProgressServer(ActionData action_data)
     {
-        MoreDoorBase fence = MoreDoorBase.Cast( action_data.m_Target.GetObject() );
-        if ( fence )
+        MoreDoorBase fence = MoreDoorBase.Cast(action_data.m_Target.GetObject());
+        if (fence)
         {
             CombinationLock combination_lock = fence.GetCombinationLock();
-            if ( combination_lock )
+            if (combination_lock)
             {
-                combination_lock.UnlockServer( action_data.m_Player, fence );
-                GetGame().GetCallQueue( CALL_CATEGORY_GAMEPLAY ).CallLater( combination_lock.DestroyLock, 200, false );
+                combination_lock.UnlockServer(action_data.m_Player, fence);
+                GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(combination_lock.DestroyLock, 200, false);
             }
         }
 
-        action_data.m_MainItem.DecreaseHealth( UADamageApplied.SAW_LOCK, false );
+        action_data.m_MainItem.DecreaseHealth(UADamageApplied.SAW_LOCK, false);
 
         //soft skills
-        action_data.m_Player.GetSoftSkillsManager().AddSpecialty( m_SpecialtyWeight );
+        action_data.m_Player.GetSoftSkillsManager().AddSpecialty(m_SpecialtyWeight);
     }
 
     override string GetAdminLogMessage(ActionData action_data)

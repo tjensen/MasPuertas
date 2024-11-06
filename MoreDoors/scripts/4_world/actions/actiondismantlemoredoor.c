@@ -6,7 +6,7 @@ class ActionDismantleMoreDoorCB : ActionContinuousBaseCB
     {
         dismantleTime = MissionBaseWorld.GetMoreDoorConfig().Get_MoreDoorDismantleTime();
 
-        m_ActionData.m_ActionComponent = new CAContinuousTime( dismantleTime );
+        m_ActionData.m_ActionComponent = new CAContinuousTime(dismantleTime);
     }
 };
 
@@ -25,7 +25,7 @@ class ActionDismantleMoreDoor: ActionContinuousBase
     override void CreateConditionComponents()
     {
         m_ConditionItem = new CCINonRuined;
-        m_ConditionTarget = new CCTNonRuined( UAMaxDistances.DEFAULT );
+        m_ConditionTarget = new CCTNonRuined(UAMaxDistances.DEFAULT);
     }
 
     override string GetText()
@@ -33,52 +33,52 @@ class ActionDismantleMoreDoor: ActionContinuousBase
         return "Dismantle";
     }
 
-    override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+    override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
     {
         Object target_object = target.GetObject();
-        MoreDoorBase base_building = MoreDoorBase.Cast( target_object );
+        MoreDoorBase base_building = MoreDoorBase.Cast(target_object);
 
-        if( base_building && base_building.AllowDismantle() && base_building.CanOpenFence() )
+        if (base_building && base_building.AllowDismantle() && base_building.CanOpenFence())
         {
-            return DismantleCondition( player, target, item, true );
+            return DismantleCondition(player, target, item, true);
         }
         return false;
     }
 
-    override bool ActionConditionContinue( ActionData action_data )
+    override bool ActionConditionContinue(ActionData action_data)
     {
-        return DismantleCondition( action_data.m_Player, action_data.m_Target, action_data.m_MainItem , false );
+        return DismantleCondition(action_data.m_Player, action_data.m_Target, action_data.m_MainItem , false);
     }
 
-    override void OnFinishProgressServer( ActionData action_data )
+    override void OnFinishProgressServer(ActionData action_data)
     {
         vector position = action_data.m_Player.GetPosition();
-        MoreDoorBase base_building = MoreDoorBase.Cast( action_data.m_Target.GetObject() );
+        MoreDoorBase base_building = MoreDoorBase.Cast(action_data.m_Target.GetObject());
 
         base_building.Delete();
-        ItemBase j_door = ItemBase.Cast(GetGame().CreateObject(base_building.j_moreDoorKit(), position, false ));
-        MoreDoorKitBase returnGoods = MoreDoorKitBase.Cast( j_door );
+        ItemBase j_door = ItemBase.Cast(GetGame().CreateObject(base_building.j_moreDoorKit(), position, false));
+        MoreDoorKitBase returnGoods = MoreDoorKitBase.Cast(j_door);
         returnGoods.ReturnGoodsFromDismantle();
 
         //add damage to tool
-        action_data.m_MainItem.DecreaseHealth( UADamageApplied.DISMANTLE, false );
+        action_data.m_MainItem.DecreaseHealth(UADamageApplied.DISMANTLE, false);
     }
 
     //setup
-    override bool SetupAction( PlayerBase player, ActionTarget target, ItemBase item, out ActionData action_data, Param extra_data = NULL )
+    override bool SetupAction(PlayerBase player, ActionTarget target, ItemBase item, out ActionData action_data, Param extra_data = NULL)
     {
-        if( super.SetupAction( player, target, item, action_data, extra_data ) )
+        if (super.SetupAction(player, target, item, action_data, extra_data))
         {
-            SetBuildingAnimation( item );
+            SetBuildingAnimation(item);
 
             return true;
         }
         return false;
     }
 
-    protected void SetBuildingAnimation( ItemBase item )
+    protected void SetBuildingAnimation(ItemBase item)
     {
-        switch( item.Type() )
+        switch (item.Type())
         {
             case Shovel:
             case FieldShovel:
@@ -93,25 +93,25 @@ class ActionDismantleMoreDoor: ActionContinuousBase
         }
     }
 
-    protected bool DismantleCondition( PlayerBase player, ActionTarget target, ItemBase item, bool camera_check )
+    protected bool DismantleCondition(PlayerBase player, ActionTarget target, ItemBase item, bool camera_check)
     {
-        if ( player && !player.IsLeaning() )
+        if (player && !player.IsLeaning())
         {
             Object target_object = target.GetObject();
-            MoreDoorBase base_building = MoreDoorBase.Cast( target_object );
-            if ( base_building )
+            MoreDoorBase base_building = MoreDoorBase.Cast(target_object);
+            if (base_building)
             {
-                string part_name = target_object.GetActionComponentName( target.GetComponentIndex() );
+                string part_name = target_object.GetActionComponentName(target.GetComponentIndex());
 
                 //camera and position checks
-                if ( !base_building.IsFacingPlayer( player, part_name) && !player.GetInputController().CameraIsFreeLook() && base_building.HasProperDistance( part_name, player ) )
+                if (!base_building.IsFacingPlayer(player, part_name) && !player.GetInputController().CameraIsFreeLook() && base_building.HasProperDistance(part_name, player))
                 {
                     //Camera check (client-only)
-                    if ( camera_check )
+                    if (camera_check)
                     {
-                        if ( GetGame() && ( !GetGame().IsMultiplayer() || GetGame().IsClient() ) )
+                        if (GetGame() && (!GetGame().IsMultiplayer() || GetGame().IsClient()))
                         {
-                            if ( base_building.IsFacingCamera( part_name ) )
+                            if (base_building.IsFacingCamera(part_name))
                             {
                                 return false;
                             }

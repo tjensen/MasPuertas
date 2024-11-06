@@ -4,7 +4,7 @@ class ActionDestroyMoreDoorCB : ActionContinuousBaseCB
     {
         Object targetObject = m_ActionData.m_Target.GetObject();
         int raidTime = MissionBaseWorld.GetMoreDoorConfig().Get_MoreDoorDestroyTime(targetObject.GetType());
-        m_ActionData.m_ActionComponent = new CAContinuousTime( raidTime );
+        m_ActionData.m_ActionComponent = new CAContinuousTime(raidTime);
     }
 };
 
@@ -23,7 +23,7 @@ class ActionDestroyMoreDoor: ActionContinuousBase
     override void CreateConditionComponents()
     {
         m_ConditionItem = new CCINonRuined;
-        m_ConditionTarget = new CCTNonRuined( UAMaxDistances.DEFAULT );
+        m_ConditionTarget = new CCTNonRuined(UAMaxDistances.DEFAULT);
     }
 
     override string GetText()
@@ -31,18 +31,18 @@ class ActionDestroyMoreDoor: ActionContinuousBase
         return "Destroy";
     }
 
-    override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+    override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
     {
         Object target_object = target.GetObject();
-        MoreDoorBase base_building = MoreDoorBase.Cast( target_object );
-        if ( base_building )
+        MoreDoorBase base_building = MoreDoorBase.Cast(target_object);
+        if (base_building)
         {
             if (HasFancyRaidTools(item))
             {
-                if( base_building.AllowDestruction() && CfgAllowDestruct() )
+                if (base_building.AllowDestruction() && CfgAllowDestruct())
                 {
                     //return true;
-                    return DestroyCondition( player, target, item, true );
+                    return DestroyCondition(player, target, item, true);
                 }
             }
         }
@@ -56,7 +56,7 @@ class ActionDestroyMoreDoor: ActionContinuousBase
 
         foreach (string tool : j_raidingTools)
         {
-            if ( item_in_hands && item_in_hands.IsKindOf(tool) )
+            if (item_in_hands && item_in_hands.IsKindOf(tool))
             {
                 return true;
             }
@@ -69,46 +69,41 @@ class ActionDestroyMoreDoor: ActionContinuousBase
         return MissionBaseWorld.GetMoreDoorConfig().Get_CanDestroyMoreDoor();
     }
 
-    override bool ActionConditionContinue( ActionData action_data )
+    override bool ActionConditionContinue(ActionData action_data)
     {
-        return DestroyCondition( action_data.m_Player, action_data.m_Target, action_data.m_MainItem , false );
+        return DestroyCondition(action_data.m_Player, action_data.m_Target, action_data.m_MainItem , false);
     }
 
-    override void OnFinishProgressServer( ActionData action_data )
+    override void OnFinishProgressServer(ActionData action_data)
     {
-        MoreDoorBase base_building = MoreDoorBase.Cast( action_data.m_Target.GetObject() );
+        MoreDoorBase base_building = MoreDoorBase.Cast(action_data.m_Target.GetObject());
         int damageToTool = MissionBaseWorld.GetMoreDoorConfig().Get_MoreDoorToolDamage();
 
         base_building.Delete();
 
-        action_data.m_MainItem.DecreaseHealth( damageToTool, false );
+        action_data.m_MainItem.DecreaseHealth(damageToTool, false);
     }
 
-    protected bool DestroyCondition( PlayerBase player, ActionTarget target, ItemBase item, bool camera_check )
+    protected bool DestroyCondition(PlayerBase player, ActionTarget target, ItemBase item, bool camera_check)
     {
-        if ( player && !player.IsLeaning() )
+        if (player && !player.IsLeaning())
         {
             Object target_object = target.GetObject();
-            MoreDoorBase base_building = MoreDoorBase.Cast( target_object );
+            MoreDoorBase base_building = MoreDoorBase.Cast(target_object);
 
-            // if( base_building && base_building.DismantleDisabled())
-            // {
-            //  return true;
-            // }
-
-            if ( base_building )
+            if (base_building)
             {
                 string part_name = "door1";
 
                 //camera and position checks
-                if ( base_building.IsFacingPlayer( player, part_name ) && !player.GetInputController().CameraIsFreeLook() )
+                if (base_building.IsFacingPlayer(player, part_name) && !player.GetInputController().CameraIsFreeLook())
                 {
                     //Camera check (client-only)
-                    if ( camera_check )
+                    if (camera_check)
                     {
-                        if ( GetGame() && ( !GetGame().IsMultiplayer() || GetGame().IsClient() ) )
+                        if (GetGame() && (!GetGame().IsMultiplayer() || GetGame().IsClient()))
                         {
-                            if ( !base_building.IsFacingCamera( part_name ) )
+                            if (!base_building.IsFacingCamera(part_name))
                             {
                                 return false;
                             }

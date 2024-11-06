@@ -55,18 +55,13 @@ class craft_MoreDoorBarricade extends RecipeBase
         m_ResultReplacesIngredient[0] = -1;// value == -1 means do nothing; a value >= 0 means this result will transfer item propertiesvariables, attachments etc.. from an ingredient value
     }
 
-    override bool CanDo(ItemBase ingredients[], PlayerBase player)//final check for recipe's validity
+    override bool CanDo(ItemBase ingredients[], PlayerBase player)
     {
-        if( MissionBaseWorld.GetMoreDoorConfig().Get_CanCraftDoorKits() )
+        if (MissionBaseWorld.GetMoreDoorConfig().Get_CanCraftDoorKits())
         {
             return true;
         }
         return false;
-    }
-
-    override void Do(ItemBase ingredients[], PlayerBase player,array<ItemBase> results, float specialty_weight)//gets called upon recipe's completion
-    {
-        Debug.Log("Recipe Do method called","recipes");
     }
 };
 
