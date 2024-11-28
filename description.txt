@@ -1,5 +1,7 @@
 This is a less broken fork of the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2007175894]MoreDoors[/url] mod by [url=https://steamcommunity.com/id/jokerofclub]jest[/url], which has stopped being maintained.
 
+[url=https://github.com/tjensen/MasPuertas]Pull requests[/url] are welcomed!
+
 [h1]License[/h1]
 
 As documented in the "Permissions" section of the description on the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2007175894]MoreDoors Steam workshop page[/url]:
