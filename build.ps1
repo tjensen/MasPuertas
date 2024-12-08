@@ -20,7 +20,7 @@ New-Item -Type Directory "P:\@${ModName}\extras" | Out-Null
 $originalVersion -replace "\bdev\b","$version" | Set-Content -path "$VersionFile" -NoNewLine
 $originalModCpp -replace "\bdev\b","$rawVersion" | Set-Content -path "$ModCppFile" -NoNewLine
 
-& "$((Get-ItemProperty -Path "HKCU:\Software\bohemia interactive\Dayz Tools").path)\Bin\AddonBuilder\AddonBuilder.exe" "P:\${ModName}\MoreDoors".ToLower() "P:\@${ModName}\addons" "-clear" "-project=P:\${ModName}" "-sign=$env:BIPRIVATEKEY_PATH" "-packonly" "-include=include.lst"
+pbo "--sign=$env:BIPRIVATEKEY_PATH" "--header=prefix=moredoors" "--chdir=moredoors" "--pattern=**/config.cpp" "--pattern=**/*.c" "--pattern=**/*.paa" "--pattern=**/*.p3d" "--pattern=**/*.rvmat" "--pattern=**/*.csv" "P:\@${ModName}\addons\maspuertas.pbo"
 $buildcode = $lastexitcode
 $builderror = $errorMessage
 
