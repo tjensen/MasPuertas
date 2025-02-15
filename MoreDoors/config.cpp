@@ -11,6 +11,7 @@ class CfgMods
     class MoreDoors
     {
         type = "mod";
+        defines[] = {"MAS_PUERTAS"};
         class defs
         {
             class gameScriptModule
