@@ -2,28 +2,32 @@ class CfgPatches
 {
     class MoreDoors
     {
-        units[]=
+        requiredAddons[] = {"DZ_Data", "DZ_Gear_Camping", "DZ_Scripts"};
+    };
+};
+
+class CfgMods
+{
+    class MoreDoors
+    {
+        type = "mod";
+        class defs
         {
-            "MoreDoorVaultKit",
-            "MoreDoorSmallKit",
-            "MoreDoorSmallShantyKit",
-            "MoreDoorSmallMetalKit",
-            "MoreDoorVault",
-            "MoreDoorSmall",
-            "MoreDoorSmallShanty",
-            "MoreDoorSmallMetal",
-            "MoreDoorSafe",
-            "MoreDoorBarricadeKit",
-            "MoreDoorBarricade",
-            "MoreDoorMetalBarricade"
-        };
-        weapons[]={};
-        requiredVersion=0.1;
-        requiredAddons[]=
-        {
-            "DZ_Data",
-            "DZ_Gear_Camping",
-            "DZ_Scripts"
+            class gameScriptModule
+            {
+                value = "";
+                files[] = {"MoreDoors/Scripts/3_Game"};
+            };
+            class worldScriptModule
+            {
+                value = "";
+                files[] = {"MoreDoors/Scripts/4_World"};
+            };
+            class missionScriptModule
+            {
+                value = "";
+                files[] = {"MoreDoors/Scripts/5_Mission"};
+            };
         };
     };
 };
@@ -32,54 +36,10 @@ class CfgSlots
 {
     class Slot_MetalSheet
     {
-        name="MetalSheet";
-        displayName="MetalSheet";
-        ghostIcon="missing";
-        stackMax=3;
-    };
-};
-
-class CfgMods
-{
-    class MoreDoors
-    {
-        type="mod";
-        author="spahgettah";
-        dir="MoreDoors";
-        name="MoreDoors";
-        dependencies[]=
-        {
-            "Game",
-            "World",
-            "Mission"
-        };
-        class defs
-        {
-            class gameScriptModule
-            {
-                value="";
-                files[]=
-                {
-                    "MoreDoors/Scripts/3_Game"
-                };
-            };
-            class worldScriptModule
-            {
-                value="";
-                files[]=
-                {
-                    "MoreDoors/Scripts/4_World"
-                };
-            };
-            class missionScriptModule
-            {
-                value="";
-                files[]=
-                {
-                    "MoreDoors/Scripts/5_Mission"
-                };
-            };
-        };
+        name = "MetalSheet";
+        displayName = "MetalSheet";
+        ghostIcon = "missing";
+        stackMax = 3;
     };
 };
 
