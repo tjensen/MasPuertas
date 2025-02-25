@@ -115,7 +115,7 @@ class MoreDoorKitBase extends ItemBase
         return true;
     }
 
-    override bool CanReleaseCargo(EntityAI attachment)
+    override bool CanReleaseCargo(EntityAI cargo)
     {
         return true;
     }
