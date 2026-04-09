@@ -1,3 +1,8 @@
+> [!WARNING]
+> **Repository archived!**
+> 
+> Due to https://feedback.bistudio.com/T196232 and the original unbinarized P3D files being unavailable, I will no longer be updating this mod.
+
 # MasPuertas
 
 This is a less broken fork of the [MoreDoors](https://steamcommunity.com/sharedfiles/filedetails/?id=2007175894) mod by [jest](https://steamcommunity.com/id/jokerofclub), which has stopped being maintained.
